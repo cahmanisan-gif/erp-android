@@ -1,0 +1,27 @@
+R_DEF: Internal format may change without notice
+local
+color brand_dark
+color brand_light
+color brand_red
+color dark_bg
+color gray_bg
+color white
+drawable barcode_overlay
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+id btnCancel
+id btnRetry
+id offlineLayout
+id previewView
+id swipeRefresh
+id webView
+layout activity_barcode_scanner
+layout activity_main
+layout activity_splash
+mipmap ic_launcher
+mipmap ic_launcher_legacy
+mipmap ic_launcher_round
+string app_name
+style Theme.RajaVapor
+style Theme.RajaVapor.Splash
+xml network_security_config

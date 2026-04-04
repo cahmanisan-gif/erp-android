@@ -1,0 +1,90 @@
+[
+    {
+        "merged": "com.rajavavapor.app-debug-40:/layout_activity_main.xml.flat",
+        "source": "com.rajavavapor.app-main-42:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.rajavavapor.app-debug-40:/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "com.rajavavapor.app-main-42:/mipmap-mdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.rajavavapor.app-debug-40:/layout_activity_barcode_scanner.xml.flat",
+        "source": "com.rajavavapor.app-main-42:/layout/activity_barcode_scanner.xml"
+    },
+    {
+        "merged": "com.rajavavapor.app-debug-40:/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "com.rajavavapor.app-main-42:/mipmap-xhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.rajavavapor.app-debug-40:/mipmap-xxhdpi_ic_launcher.xml.flat",
+        "source": "com.rajavavapor.app-main-42:/mipmap-xxhdpi/ic_launcher.xml"
+    },
+    {
+        "merged": "com.rajavavapor.app-debug-40:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "com.rajavavapor.app-main-42:/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.rajavavapor.app-debug-40:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.rajavavapor.app-main-42:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.rajavavapor.app-debug-40:/mipmap-xxxhdpi_ic_launcher.xml.flat",
+        "source": "com.rajavavapor.app-main-42:/mipmap-xxxhdpi/ic_launcher.xml"
+    },
+    {
+        "merged": "com.rajavavapor.app-debug-40:/mipmap-hdpi_ic_launcher_legacy.png.flat",
+        "source": "com.rajavavapor.app-main-42:/mipmap-hdpi/ic_launcher_legacy.png"
+    },
+    {
+        "merged": "com.rajavavapor.app-debug-40:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.rajavavapor.app-main-42:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.rajavavapor.app-debug-40:/mipmap-mdpi_ic_launcher_legacy.png.flat",
+        "source": "com.rajavavapor.app-main-42:/mipmap-mdpi/ic_launcher_legacy.png"
+    },
+    {
+        "merged": "com.rajavavapor.app-debug-40:/mipmap-xhdpi_ic_launcher_legacy.png.flat",
+        "source": "com.rajavavapor.app-main-42:/mipmap-xhdpi/ic_launcher_legacy.png"
+    },
+    {
+        "merged": "com.rajavavapor.app-debug-40:/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "com.rajavavapor.app-main-42:/mipmap-xxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.rajavavapor.app-debug-40:/mipmap-xhdpi_ic_launcher.xml.flat",
+        "source": "com.rajavavapor.app-main-42:/mipmap-xhdpi/ic_launcher.xml"
+    },
+    {
+        "merged": "com.rajavavapor.app-debug-40:/mipmap-xxhdpi_ic_launcher_legacy.png.flat",
+        "source": "com.rajavavapor.app-main-42:/mipmap-xxhdpi/ic_launcher_legacy.png"
+    },
+    {
+        "merged": "com.rajavavapor.app-debug-40:/mipmap-xxxhdpi_ic_launcher_legacy.png.flat",
+        "source": "com.rajavavapor.app-main-42:/mipmap-xxxhdpi/ic_launcher_legacy.png"
+    },
+    {
+        "merged": "com.rajavavapor.app-debug-40:/mipmap-hdpi_ic_launcher.xml.flat",
+        "source": "com.rajavavapor.app-main-42:/mipmap-hdpi/ic_launcher.xml"
+    },
+    {
+        "merged": "com.rajavavapor.app-debug-40:/drawable_barcode_overlay.xml.flat",
+        "source": "com.rajavavapor.app-main-42:/drawable/barcode_overlay.xml"
+    },
+    {
+        "merged": "com.rajavavapor.app-debug-40:/xml_network_security_config.xml.flat",
+        "source": "com.rajavavapor.app-main-42:/xml/network_security_config.xml"
+    },
+    {
+        "merged": "com.rajavavapor.app-debug-40:/layout_activity_splash.xml.flat",
+        "source": "com.rajavavapor.app-main-42:/layout/activity_splash.xml"
+    },
+    {
+        "merged": "com.rajavavapor.app-debug-40:/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "com.rajavavapor.app-main-42:/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.rajavavapor.app-debug-40:/mipmap-mdpi_ic_launcher.xml.flat",
+        "source": "com.rajavavapor.app-main-42:/mipmap-mdpi/ic_launcher.xml"
+    }
+]

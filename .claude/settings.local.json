@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/rajavapor/.ssh/**)",
+      "Bash(brew install:*)",
+      "Bash(ssh -o StrictHostKeyChecking=no -o ConnectTimeout=10 -o BatchMode=no root@148.230.99.140 \"echo connected && uname -a && whoami\" 2)",
+      "Bash(1:*)",
+      "Bash(pip3 install:*)",
+      "Bash(python3 -c \":*)"
+    ]
+  }
+}

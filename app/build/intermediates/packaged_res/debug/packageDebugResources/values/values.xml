@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="brand_dark">#A4161A</color>
+    <color name="brand_light">#FDECEA</color>
+    <color name="brand_red">#C1121F</color>
+    <color name="dark_bg">#212529</color>
+    <color name="gray_bg">#F8F9FA</color>
+    <color name="white">#FFFFFF</color>
+    <string name="app_name">PORTAL</string>
+    <style name="Theme.RajaVapor" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/brand_red</item>
+        <item name="colorPrimaryDark">@color/brand_dark</item>
+        <item name="colorAccent">@color/brand_red</item>
+        <item name="android:statusBarColor">@color/dark_bg</item>
+        <item name="android:navigationBarColor">@color/dark_bg</item>
+    </style>
+    <style name="Theme.RajaVapor.Splash" parent="Theme.RajaVapor">
+        <item name="android:windowBackground">@color/dark_bg</item>
+    </style>
+</resources>
