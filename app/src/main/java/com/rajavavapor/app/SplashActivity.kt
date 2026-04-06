@@ -3,6 +3,7 @@ package com.rajavavapor.app
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatDelegate
 import android.os.Handler
 import android.os.Looper
 import androidx.activity.enableEdgeToEdge
@@ -17,6 +18,8 @@ import com.rajavavapor.app.ui.main.MainActivity
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Force light mode — dark mode disabled untuk konsistensi visual
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
