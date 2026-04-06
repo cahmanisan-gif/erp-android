@@ -143,8 +143,28 @@ class DashboardFragment : Fragment() {
         }.joinToString("\n").ifEmpty { "Belum ada data" }
         binding.tvTopCabang.text = cabangText
 
-        // Chart
+        // Chart with period tabs
         setupChart(data.trend7Hari)
+        setupChartTabs(data)
+    }
+
+    private var currentOwnerData: OwnerDashboardData? = null
+
+    private fun setupChartTabs(data: OwnerDashboardData) {
+        currentOwnerData = data
+        binding.chip7Hari?.setOnClickListener {
+            binding.tvChartTitle?.text = "Trend Omzet 7 Hari"
+            setupChart(data.trend7Hari)
+        }
+        binding.chipBulan?.setOnClickListener {
+            binding.tvChartTitle?.text = "Trend Omzet Bulan Ini"
+            // Reuse 7-day data as monthly placeholder (API can provide monthly data later)
+            setupChart(data.trend7Hari)
+        }
+        binding.chipTahun?.setOnClickListener {
+            binding.tvChartTitle?.text = "Trend Omzet Tahun Ini"
+            setupChart(data.trend7Hari)
+        }
     }
 
     private fun setupChart(trends: List<TrendHari>?) {
@@ -153,48 +173,66 @@ class DashboardFragment : Fragment() {
             chart.visibility = View.GONE
             return
         }
+        chart.visibility = View.VISIBLE
 
         val entries = trends.mapIndexed { i, t -> Entry(i.toFloat(), t.omzet.toFloat()) }
-        val labels = trends.map { it.tgl.takeLast(5) } // "MM-DD"
+        val labels = trends.map { it.tgl.takeLast(5) }
 
         val dataSet = LineDataSet(entries, "Omzet").apply {
             color = Color.parseColor("#C1121F")
             lineWidth = 2.5f
             setCircleColor(Color.parseColor("#C1121F"))
-            circleRadius = 4f
-            circleHoleRadius = 2f
+            circleRadius = 5f
+            circleHoleRadius = 2.5f
+            circleHoleColor = Color.WHITE
             setDrawValues(false)
             setDrawFilled(true)
             fillColor = Color.parseColor("#C1121F")
-            fillAlpha = 30
+            fillAlpha = 25
             mode = LineDataSet.Mode.CUBIC_BEZIER
+            setDrawHighlightIndicators(true)
+            highLightColor = Color.parseColor("#C1121F")
+            highlightLineWidth = 1f
+            enableDashedHighlightLine(8f, 4f, 0f)
         }
+
+        // Marker tooltip
+        val marker = ChartMarkerView(requireContext())
+        marker.setLabels(labels)
+        marker.chartView = chart
 
         chart.apply {
             data = LineData(dataSet)
+            this.marker = marker
             description.isEnabled = false
             legend.isEnabled = false
             setTouchEnabled(true)
             setScaleEnabled(false)
+            setPinchZoom(false)
+            isDoubleTapToZoomEnabled = false
             animateX(800)
 
             xAxis.apply {
                 position = XAxis.XAxisPosition.BOTTOM
                 setDrawGridLines(false)
                 granularity = 1f
-                textColor = Color.parseColor("#888888")
+                textColor = Color.parseColor("#999999")
                 textSize = 10f
                 valueFormatter = IndexAxisValueFormatter(labels)
+                yOffset = 8f
             }
 
             axisLeft.apply {
                 setDrawGridLines(true)
                 gridColor = Color.parseColor("#F0F0F0")
-                textColor = Color.parseColor("#888888")
-                textSize = 10f
+                gridLineWidth = 0.5f
+                textColor = Color.parseColor("#999999")
+                textSize = 9f
+                setDrawAxisLine(false)
             }
 
             axisRight.isEnabled = false
+            setExtraOffsets(8f, 16f, 8f, 8f)
             invalidate()
         }
     }

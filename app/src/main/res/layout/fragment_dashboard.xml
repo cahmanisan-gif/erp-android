@@ -139,7 +139,7 @@
                 android:paddingTop="16dp"
                 android:visibility="gone">
 
-                <!-- ── Chart: Trend 7 Hari ── -->
+                <!-- ── Chart with period tabs ── -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -154,18 +154,69 @@
                         android:orientation="vertical"
                         android:padding="18dp">
 
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Trend Omzet 7 Hari"
-                            android:textColor="#111111"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:id="@+id/tvChartTitle"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Trend Omzet"
+                                android:textColor="#111111"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <!-- Period tabs -->
+                            <com.google.android.material.chip.ChipGroup
+                                android:id="@+id/chipGroupPeriod"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:singleSelection="true"
+                                app:selectionRequired="true">
+
+                                <com.google.android.material.chip.Chip
+                                    android:id="@+id/chip7Hari"
+                                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="28dp"
+                                    android:text="7 Hari"
+                                    android:textSize="11sp"
+                                    android:checked="true"
+                                    app:chipBackgroundColor="@color/brand_red"
+                                    app:chipCornerRadius="14dp"
+                                    app:chipMinHeight="28dp" />
+
+                                <com.google.android.material.chip.Chip
+                                    android:id="@+id/chipBulan"
+                                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="28dp"
+                                    android:text="Bulan"
+                                    android:textSize="11sp"
+                                    app:chipCornerRadius="14dp"
+                                    app:chipMinHeight="28dp" />
+
+                                <com.google.android.material.chip.Chip
+                                    android:id="@+id/chipTahun"
+                                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="28dp"
+                                    android:text="Tahun"
+                                    android:textSize="11sp"
+                                    app:chipCornerRadius="14dp"
+                                    app:chipMinHeight="28dp" />
+
+                            </com.google.android.material.chip.ChipGroup>
+                        </LinearLayout>
 
                         <com.github.mikephil.charting.charts.LineChart
                             android:id="@+id/chartTrend"
                             android:layout_width="match_parent"
-                            android:layout_height="180dp"
+                            android:layout_height="200dp"
                             android:layout_marginTop="12dp" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
