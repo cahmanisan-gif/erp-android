@@ -4,11 +4,33 @@
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-    <!-- Simple "RV" text placeholder - ganti dengan logo asli -->
+
+    <!--
+        Adaptive icon safe zone: inner 72dp (from 18,18 to 90,90)
+        Content placed within 26-82 for comfortable padding
+    -->
+
+    <!-- "R" letter - large -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M34,44 L34,64 L38,64 L38,56 L42,64 L46,64 L41,55 L45,44 L41,44 L38,52 L38,44 Z"/>
+        android:pathData="M28,30 L28,58 L33,58 L33,48 L38,48 L43,58 L49,58 L43,47 C46,45.5 48,42.5 48,39 C48,33.5 44,30 38,30 Z M33,35 L38,35 C41.5,35 43,36.5 43,39 C43,41.5 41.5,43 38,43 L33,43 Z"/>
+
+    <!-- "V" letter - smaller, to the right -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M50,44 L55,64 L59,64 L64,44 L60,44 L57,57 L54,44 Z"/>
+        android:pathData="M62,30 L57,48 L52,30 L47,30 L54.5,52 L59.5,52 L67,30 Z"/>
+
+    <!-- "PORTAL" text - small, at bottom -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M30,64 L30,78 L34,78 L34,73 L37,73 C40,73 42,71.5 42,68.5 C42,65.5 40,64 37,64 Z M34,67 L36.5,67 C38,67 38.8,67.8 38.8,68.5 C38.8,69.2 38,70 36.5,70 L34,70 Z"/>
+
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M44,71 C44,75 46.5,78.3 50.5,78.3 C54.5,78.3 57,75 57,71 C57,67 54.5,63.7 50.5,63.7 C46.5,63.7 44,67 44,71 Z M47.3,71 C47.3,68.5 48.5,66.7 50.5,66.7 C52.5,66.7 53.7,68.5 53.7,71 C53.7,73.5 52.5,75.3 50.5,75.3 C48.5,75.3 47.3,73.5 47.3,71 Z"/>
+
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M59,64 L59,78 L62.5,78 L62.5,73 L65,73 L68,78 L72,78 L68.5,72.5 C70.3,71.5 71.5,69.8 71.5,68 C71.5,65.5 69.5,64 66,64 Z M62.5,67 L65.5,67 C67.2,67 68.2,67.8 68.2,68.8 C68.2,69.8 67.2,70.5 65.5,70.5 L62.5,70.5 Z"/>
+
 </vector>

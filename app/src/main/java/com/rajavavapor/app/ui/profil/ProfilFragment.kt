@@ -44,7 +44,7 @@ class ProfilFragment : Fragment() {
                 .show()
         }
 
-        binding.tvAppVersion.text = "Raja Vapor v2.0.0 • poinraja.com"
+        binding.tvAppVersion.text = "Raja Vapor Portal v2.1.0 • poinraja.com"
     }
 
     private fun formatRole(role: String): String = when (role) {

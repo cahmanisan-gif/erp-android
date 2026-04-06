@@ -23,6 +23,10 @@ class SessionManager(context: Context) {
         return try { gson.fromJson(json, UserInfo::class.java) } catch (e: Exception) { null }
     }
 
+    fun saveCabangId(id: Int) = prefs.edit().putInt("cabang_id", id).apply()
+
+    fun getCabangId(): Int = prefs.getInt("cabang_id", 0)
+
     fun isLoggedIn(): Boolean = getToken() != null
 
     fun logout() = prefs.edit().clear().apply()

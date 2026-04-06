@@ -11,8 +11,8 @@ android {
         applicationId = "com.rajavavapor.app"
         minSdk = 26
         targetSdk = 34
-        versionCode = 2
-        versionName = "2.0.0"
+        versionCode = 3
+        versionName = "2.1.0"
     }
 
     buildFeatures {
@@ -72,6 +72,9 @@ dependencies {
 
     // ML Kit Barcode Scanning
     implementation("com.google.mlkit:barcode-scanning:17.2.0")
+
+    // ML Kit Face Detection
+    implementation("com.google.mlkit:face-detection:16.1.6")
 
     // Google Play Services Location (GPS)
     implementation("com.google.android.gms:play-services-location:21.1.0")

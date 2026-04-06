@@ -6,6 +6,7 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
+import com.rajavavapor.app.data.SessionManager
 import com.rajavavapor.app.databinding.ActivityLoginBinding
 import com.rajavavapor.app.ui.main.MainActivity
 
@@ -48,6 +49,14 @@ class LoginActivity : AppCompatActivity() {
                 Snackbar.make(binding.root, msg, Snackbar.LENGTH_LONG).show()
                 viewModel.clearError()
             }
+        }
+
+        binding.btnFaceLogin.setOnClickListener {
+            val session = SessionManager(this)
+            val cabangId = session.getCabangId()
+            startActivity(Intent(this, FaceLoginActivity::class.java).apply {
+                putExtra("cabang_id", cabangId)
+            })
         }
     }
 }

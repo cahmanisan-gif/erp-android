@@ -76,4 +76,18 @@ interface ApiService {
         @Query("bulan") bulan: Int? = null,
         @Query("tahun") tahun: Int? = null
     ): AbsensiRiwayatResponse
+
+    // ── Face Login ───────────────────────────────────────────────────────────
+
+    @GET("absensi/api/face/employees")
+    suspend fun getFaceEmployees(
+        @Query("cabang_id") cabangId: Int
+    ): FaceEmployeeResponse
+
+    @Multipart
+    @POST("absensi/api/face/verify")
+    suspend fun verifyFace(
+        @Part foto: MultipartBody.Part,
+        @Part("personnel_id") personnelId: RequestBody
+    ): FaceVerifyResponse
 }

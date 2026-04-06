@@ -159,6 +159,28 @@ data class AbsensiSummary(
     val hadir: Int?
 )
 
+// ── Face Login ────────────────────────────────────────────────────────────────
+
+data class FaceEmployeeResponse(
+    val success: Boolean,
+    val data: List<FaceEmployee>?
+)
+
+data class FaceEmployee(
+    val id: Int,
+    @SerializedName("nama_lengkap") val namaLengkap: String,
+    @SerializedName("foto_url") val fotoUrl: String?,
+    val role: String?
+)
+
+data class FaceVerifyResponse(
+    val success: Boolean,
+    val token: String?,
+    val user: UserInfo?,
+    val message: String?,
+    val confidence: Double?
+)
+
 // ── Generic ───────────────────────────────────────────────────────────────────
 
 data class SimpleResponse(val success: Boolean, val message: String?)

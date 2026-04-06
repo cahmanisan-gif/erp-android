@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Raja Vapor</string>
+    <string name="app_name">Portal</string>
     <string name="absensi_title">Absensi</string>
     <string name="belum_clock_in">Belum clock in hari ini</string>
     <string name="sudah_clock_in">Sudah clock in pukul %s</string>
