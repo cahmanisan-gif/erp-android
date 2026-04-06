@@ -10,7 +10,7 @@
     <ImageView
         android:layout_width="@dimen/logo_size"
         android:layout_height="@dimen/logo_size"
-        android:src="@mipmap/ic_launcher_legacy"
+        android:src="@drawable/logo_rajavapor"
         android:scaleType="fitCenter"
         android:contentDescription="Raja Vapor Logo" />
 
