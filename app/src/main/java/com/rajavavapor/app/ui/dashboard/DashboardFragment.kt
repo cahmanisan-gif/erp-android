@@ -89,6 +89,7 @@ class DashboardFragment : Fragment() {
 
     private fun showOwnerDashboard(data: OwnerDashboardData) {
         binding.layoutOwner.visibility = View.VISIBLE
+        binding.layoutOwnerHeader?.visibility = View.VISIBLE
         binding.layoutBasicStats.visibility = View.GONE
 
         AnimationHelper.animateRupiah(binding.tvOmzetHariIni, data.omzetHariIni)
