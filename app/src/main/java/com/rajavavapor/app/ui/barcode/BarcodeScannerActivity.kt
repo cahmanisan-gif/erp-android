@@ -31,7 +31,7 @@ class BarcodeScannerActivity : AppCompatActivity() {
 
         // Only pad bottom for cancel button, camera stays full screen
         ViewCompat.setOnApplyWindowInsetsListener(binding.btnCancel) { view, insets ->
-            val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout())
             view.updatePadding(bottom = bars.bottom)
             insets
         }

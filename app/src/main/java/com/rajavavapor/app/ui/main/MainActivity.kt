@@ -54,9 +54,11 @@ class MainActivity : AppCompatActivity() {
 
         fetchNotificationBadge(bottomNav, navRail)
 
-        // Handle system bar insets
+        // Handle system bar + display cutout insets (Samsung S series punch-hole, etc.)
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { _, insets ->
-            val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            val bars = insets.getInsets(
+                WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
+            )
             binding.navHostFragment.updatePadding(top = bars.top)
             bottomNav?.updatePadding(bottom = bars.bottom)
             navRail?.updatePadding(top = bars.top, left = bars.left)
