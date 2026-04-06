@@ -53,19 +53,19 @@ open class StubFragment : Fragment() {
 
 // ── Concrete stub fragments for each module ──────────────────────────────────
 
-class PosFragment : StubFragment() { override val moduleName = "POS / Kasir" }
-class InvoiceFragment : StubFragment() { override val moduleName = "Invoice" }
-class CustomerFragment : StubFragment() { override val moduleName = "Customer" }
-class ProdukFragment : StubFragment() { override val moduleName = "Produk" }
-class ReturFragment : StubFragment() { override val moduleName = "Retur" }
-class RequestFragment : StubFragment() { override val moduleName = "Request Produk" }
-class KasFragment : StubFragment() { override val moduleName = "Kas / Bank" }
-class PiutangFragment : StubFragment() { override val moduleName = "Piutang" }
-class PembelianFragment : StubFragment() { override val moduleName = "Pembelian" }
-class PayrollFragment : StubFragment() { override val moduleName = "Payroll" }
-class IzinFragment : StubFragment() { override val moduleName = "Izin / Cuti" }
-class MonitoringFragment : StubFragment() { override val moduleName = "Monitoring" }
-class LaporanFragment : StubFragment() { override val moduleName = "Laporan Keuangan" }
-class CabangFragment : StubFragment() { override val moduleName = "Cabang" }
-class UsersFragment : StubFragment() { override val moduleName = "User Management" }
-class PromoFragment : StubFragment() { override val moduleName = "Promo" }
+// PosFragment -> moved to com.rajavavapor.app.ui.modules.pos.PosFragment
+// InvoiceFragment -> moved to com.rajavavapor.app.ui.modules.invoice.InvoiceFragment
+// CustomerFragment -> moved to com.rajavavapor.app.ui.modules.customer.CustomerFragment
+// ProdukFragment -> moved to com.rajavavapor.app.ui.modules.produk.ProdukListFragment
+// ReturFragment -> moved to com.rajavavapor.app.ui.modules.retur.ReturListFragment
+// RequestFragment -> moved to com.rajavavapor.app.ui.modules.request.RequestFragment
+// KasFragment -> moved to com.rajavavapor.app.ui.modules.kas.KasListFragment
+// PiutangFragment -> moved to com.rajavavapor.app.ui.modules.piutang.PiutangFragment
+// PembelianFragment -> moved to com.rajavavapor.app.ui.modules.pembelian.PembelianFragment
+// PayrollFragment -> moved to com.rajavavapor.app.ui.modules.payroll.PayrollFragment
+// IzinFragment -> moved to com.rajavavapor.app.ui.modules.izin.IzinFragment
+// MonitoringFragment -> moved to com.rajavavapor.app.ui.modules.monitoring.MonitoringFragment
+// LaporanFragment -> moved to com.rajavavapor.app.ui.modules.laporan.LaporanFragment
+// CabangListFragment -> moved to com.rajavavapor.app.ui.modules.cabang.CabangListFragment
+// UsersFragment -> moved to com.rajavavapor.app.ui.modules.users.UsersFragment
+// PromoFragment -> moved to com.rajavavapor.app.ui.modules.promo.PromoFragment

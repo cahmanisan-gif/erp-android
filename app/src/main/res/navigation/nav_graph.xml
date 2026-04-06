@@ -40,82 +40,82 @@
 
     <fragment
         android:id="@+id/navigation_pos"
-        android:name="com.rajavavapor.app.ui.modules.PosFragment"
+        android:name="com.rajavavapor.app.ui.modules.pos.PosFragment"
         android:label="POS" />
 
     <fragment
         android:id="@+id/navigation_invoice"
-        android:name="com.rajavavapor.app.ui.modules.InvoiceFragment"
+        android:name="com.rajavavapor.app.ui.modules.invoice.InvoiceFragment"
         android:label="Invoice" />
 
     <fragment
         android:id="@+id/navigation_customer"
-        android:name="com.rajavavapor.app.ui.modules.CustomerFragment"
+        android:name="com.rajavavapor.app.ui.modules.customer.CustomerFragment"
         android:label="Customer" />
 
     <fragment
         android:id="@+id/navigation_produk"
-        android:name="com.rajavavapor.app.ui.modules.ProdukFragment"
+        android:name="com.rajavavapor.app.ui.modules.produk.ProdukListFragment"
         android:label="Produk" />
 
     <fragment
         android:id="@+id/navigation_retur"
-        android:name="com.rajavavapor.app.ui.modules.ReturFragment"
+        android:name="com.rajavavapor.app.ui.modules.retur.ReturListFragment"
         android:label="Retur" />
 
     <fragment
         android:id="@+id/navigation_request"
-        android:name="com.rajavavapor.app.ui.modules.RequestFragment"
+        android:name="com.rajavavapor.app.ui.modules.request.RequestFragment"
         android:label="Request Produk" />
 
     <fragment
         android:id="@+id/navigation_kas"
-        android:name="com.rajavavapor.app.ui.modules.KasFragment"
+        android:name="com.rajavavapor.app.ui.modules.kas.KasListFragment"
         android:label="Kas" />
 
     <fragment
         android:id="@+id/navigation_piutang"
-        android:name="com.rajavavapor.app.ui.modules.PiutangFragment"
+        android:name="com.rajavavapor.app.ui.modules.piutang.PiutangFragment"
         android:label="Piutang" />
 
     <fragment
         android:id="@+id/navigation_pembelian"
-        android:name="com.rajavavapor.app.ui.modules.PembelianFragment"
+        android:name="com.rajavavapor.app.ui.modules.pembelian.PembelianFragment"
         android:label="Pembelian" />
 
     <fragment
         android:id="@+id/navigation_payroll"
-        android:name="com.rajavavapor.app.ui.modules.PayrollFragment"
+        android:name="com.rajavavapor.app.ui.modules.payroll.PayrollFragment"
         android:label="Payroll" />
 
     <fragment
         android:id="@+id/navigation_izin"
-        android:name="com.rajavavapor.app.ui.modules.IzinFragment"
+        android:name="com.rajavavapor.app.ui.modules.izin.IzinFragment"
         android:label="Izin" />
 
     <fragment
         android:id="@+id/navigation_monitoring"
-        android:name="com.rajavavapor.app.ui.modules.MonitoringFragment"
+        android:name="com.rajavavapor.app.ui.modules.monitoring.MonitoringFragment"
         android:label="Monitoring" />
 
     <fragment
         android:id="@+id/navigation_laporan"
-        android:name="com.rajavavapor.app.ui.modules.LaporanFragment"
+        android:name="com.rajavavapor.app.ui.modules.laporan.LaporanFragment"
         android:label="Laporan" />
 
     <fragment
         android:id="@+id/navigation_cabang"
-        android:name="com.rajavavapor.app.ui.modules.CabangFragment"
+        android:name="com.rajavavapor.app.ui.modules.cabang.CabangListFragment"
         android:label="Cabang" />
 
     <fragment
         android:id="@+id/navigation_users"
-        android:name="com.rajavavapor.app.ui.modules.UsersFragment"
+        android:name="com.rajavavapor.app.ui.modules.users.UsersFragment"
         android:label="Users" />
 
     <fragment
         android:id="@+id/navigation_promo"
-        android:name="com.rajavavapor.app.ui.modules.PromoFragment"
+        android:name="com.rajavavapor.app.ui.modules.promo.PromoFragment"
         android:label="Promo" />
 
 </navigation>
