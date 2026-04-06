@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Padding -->
+    <dimen name="screen_padding">16dp</dimen>
+    <dimen name="card_padding">16dp</dimen>
+    <dimen name="header_padding">16dp</dimen>
+
+    <!-- Text sizes -->
+    <dimen name="text_header">18sp</dimen>
+    <dimen name="text_title">16sp</dimen>
+    <dimen name="text_body">14sp</dimen>
+    <dimen name="text_small">12sp</dimen>
+    <dimen name="text_hero">28sp</dimen>
+    <dimen name="text_logo">32sp</dimen>
+    <dimen name="text_subtitle">14sp</dimen>
+
+    <!-- Components -->
+    <dimen name="button_height">56dp</dimen>
+    <dimen name="logo_size">100dp</dimen>
+    <dimen name="login_card_margin">24dp</dimen>
+    <dimen name="face_overlay_width">250dp</dimen>
+    <dimen name="face_overlay_height">300dp</dimen>
+    <dimen name="avatar_size_large">80dp</dimen>
+    <dimen name="avatar_size_small">44dp</dimen>
+    <dimen name="selfie_preview_height">200dp</dimen>
+    <dimen name="profil_label_width">100dp</dimen>
+
+    <!-- Item cards -->
+    <dimen name="item_margin_horizontal">8dp</dimen>
+    <dimen name="item_margin_vertical">4dp</dimen>
+    <dimen name="item_padding">14dp</dimen>
+</resources>

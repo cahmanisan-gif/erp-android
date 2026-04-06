@@ -8,8 +8,8 @@
     android:background="#212529">
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="@dimen/logo_size"
+        android:layout_height="@dimen/logo_size"
         android:src="@mipmap/ic_launcher"
         android:contentDescription="Raja Vapor Logo" />
 
@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:text="RAJA VAPOR"
         android:textColor="#FFFFFF"
-        android:textSize="24sp"
+        android:textSize="@dimen/text_header"
         android:fontFamily="sans-serif-medium"
         android:letterSpacing="0.15"
         android:layout_marginTop="20dp" />
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:text="PORTAL"
         android:textColor="#868E96"
-        android:textSize="14sp"
+        android:textSize="@dimen/text_subtitle"
         android:layout_marginTop="4dp" />
 
     <ProgressBar

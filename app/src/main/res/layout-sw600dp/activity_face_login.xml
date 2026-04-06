@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_bg">
+
+    <!-- Step 1: Branch Selection — centered panel -->
+    <LinearLayout
+        android:id="@+id/layoutSelectCabang"
+        android:layout_width="520dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/card_padding"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RAJA VAPOR"
+                android:textColor="@color/brand_red"
+                android:textSize="@dimen/text_logo"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Login dengan Wajah"
+                android:textColor="#AAAAAA"
+                android:textSize="@dimen/text_subtitle" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp"
+            android:paddingBottom="8dp"
+            android:text="Pilih cabang Anda:"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_body" />
+
+        <ProgressBar
+            android:id="@+id/progressCabang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="32dp"
+            android:indeterminateTint="@color/brand_red"
+            android:visibility="gone" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerCabang"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingHorizontal="@dimen/screen_padding"
+            android:clipToPadding="false" />
+
+        <TextView
+            android:id="@+id/tvErrorCabang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/screen_padding"
+            android:textColor="#999"
+            android:textSize="@dimen/text_body"
+            android:visibility="gone" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBackToLogin"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/screen_padding"
+            android:text="Kembali ke Login Username"
+            android:textColor="#AAAAAA" />
+    </LinearLayout>
+
+    <!-- Step 2: Employee Selection — centered panel -->
+    <LinearLayout
+        android:id="@+id/layoutSelectEmployee"
+        android:layout_width="520dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/card_padding"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvBranchName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/brand_red"
+                android:textSize="@dimen/text_header"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Pilih nama Anda:"
+                android:textColor="#AAAAAA"
+                android:textSize="@dimen/text_body" />
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progressEmployees"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="32dp"
+            android:indeterminateTint="@color/brand_red"
+            android:visibility="gone" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerEmployees"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingHorizontal="@dimen/screen_padding"
+            android:clipToPadding="false" />
+
+        <TextView
+            android:id="@+id/tvErrorEmployees"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/screen_padding"
+            android:textColor="#999"
+            android:textSize="@dimen/text_body"
+            android:visibility="gone" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBackToCabang"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/screen_padding"
+            android:text="Ganti Cabang"
+            android:textColor="#AAAAAA" />
+    </LinearLayout>
+
+    <!-- Step 3: Face Camera — full width (camera needs it) -->
+    <LinearLayout
+        android:id="@+id/layoutFaceCamera"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <androidx.camera.view.PreviewView
+                android:id="@+id/previewViewFace"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <View
+                android:layout_width="@dimen/face_overlay_width"
+                android:layout_height="@dimen/face_overlay_height"
+                android:layout_gravity="center"
+                android:background="@drawable/barcode_overlay" />
+
+            <TextView
+                android:id="@+id/tvFaceStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:background="#88000000"
+                android:gravity="center"
+                android:padding="@dimen/screen_padding"
+                android:text="Posisikan wajah di dalam bingkai"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_body" />
+
+            <TextView
+                android:id="@+id/tvSelectedName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|center_horizontal"
+                android:layout_marginTop="64dp"
+                android:background="@color/brand_red"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="8dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_body"
+                android:textStyle="bold" />
+
+            <ProgressBar
+                android:id="@+id/progressVerify"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center"
+                android:indeterminateTint="@color/brand_red"
+                android:visibility="gone" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/dark_bg"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/screen_padding">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCaptureFace"
+                android:layout_width="480dp"
+                android:layout_height="@dimen/button_height"
+                android:text="VERIFIKASI WAJAH"
+                android:textSize="@dimen/text_title"
+                android:textStyle="bold"
+                android:enabled="false"
+                app:backgroundTint="@color/brand_red"
+                app:cornerRadius="12dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnBackToList"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ganti Karyawan"
+                android:textColor="#AAAAAA" />
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

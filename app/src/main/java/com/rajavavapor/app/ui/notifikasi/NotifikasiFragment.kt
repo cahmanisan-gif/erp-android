@@ -6,9 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.rajavavapor.app.databinding.FragmentNotifikasiBinding
+import com.rajavavapor.app.util.ScreenHelper
 
 class NotifikasiFragment : Fragment() {
 
@@ -31,7 +32,7 @@ class NotifikasiFragment : Fragment() {
             }
         }
 
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), ScreenHelper.getGridColumns(requireContext()))
         binding.recyclerView.adapter = adapter
 
         binding.swipeRefresh.setColorSchemeResources(com.rajavavapor.app.R.color.brand_red)

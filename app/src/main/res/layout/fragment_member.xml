@@ -13,14 +13,14 @@
         android:layout_height="wrap_content"
         android:background="@color/dark_bg"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="@dimen/header_padding">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cari Member"
             android:textColor="@color/white"
-            android:textSize="18sp"
+            android:textSize="@dimen/text_header"
             android:textStyle="bold"
             android:layout_marginBottom="12dp" />
 

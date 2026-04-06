@@ -13,14 +13,14 @@
         android:layout_height="wrap_content"
         android:background="@color/dark_bg"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="@dimen/header_padding">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Absensi"
             android:textColor="@color/white"
-            android:textSize="18sp"
+            android:textSize="@dimen/text_header"
             android:textStyle="bold" />
 
         <TextView
@@ -30,7 +30,7 @@
             android:layout_marginTop="4dp"
             android:text="Memuat status..."
             android:textColor="#AAAAAA"
-            android:textSize="13sp" />
+            android:textSize="@dimen/text_small" />
     </LinearLayout>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -47,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="@dimen/screen_padding">
 
                 <!-- Card: Clock In/Out -->
                 <com.google.android.material.card.MaterialCardView
@@ -61,13 +61,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:padding="16dp">
+                        android:padding="@dimen/card_padding">
 
                         <!-- Selfie Preview -->
                         <ImageView
                             android:id="@+id/imgSelfiePreview"
                             android:layout_width="match_parent"
-                            android:layout_height="200dp"
+                            android:layout_height="@dimen/selfie_preview_height"
                             android:scaleType="centerCrop"
                             android:visibility="gone"
                             android:layout_marginBottom="12dp"
@@ -133,7 +133,7 @@
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btnClockIn"
                             android:layout_width="match_parent"
-                            android:layout_height="56dp"
+                            android:layout_height="@dimen/button_height"
                             android:text="CLOCK IN"
                             android:textSize="16sp"
                             android:textStyle="bold"
@@ -144,7 +144,7 @@
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btnClockOut"
                             android:layout_width="match_parent"
-                            android:layout_height="56dp"
+                            android:layout_height="@dimen/button_height"
                             android:text="CLOCK OUT"
                             android:textSize="16sp"
                             android:textStyle="bold"
@@ -177,7 +177,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:padding="16dp">
+                        android:padding="@dimen/card_padding">
 
                         <TextView
                             android:layout_width="wrap_content"

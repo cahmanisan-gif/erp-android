@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:background="@color/dark_bg"
         android:orientation="horizontal"
-        android:padding="16dp"
+        android:padding="@dimen/header_padding"
         android:gravity="center_vertical">
 
         <LinearLayout
@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:text="Notifikasi"
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="@dimen/text_header"
                 android:textStyle="bold" />
 
             <TextView

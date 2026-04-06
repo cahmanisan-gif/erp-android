@@ -14,7 +14,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.rajavavapor.app.databinding.FragmentAbsensiBinding
@@ -22,6 +22,7 @@ import com.rajavavapor.app.ui.barcode.BarcodeScannerActivity
 import com.rajavavapor.app.util.LocationHelper
 import com.rajavavapor.app.util.LocationResult
 import com.rajavavapor.app.util.PhotoHelper
+import com.rajavavapor.app.util.ScreenHelper
 import kotlinx.coroutines.launch
 import java.io.File
 
@@ -106,7 +107,7 @@ class AbsensiFragment : Fragment() {
 
     private fun setupRecyclerView() {
         adapter = AbsensiRiwayatAdapter()
-        binding.recyclerViewRiwayat.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerViewRiwayat.layoutManager = GridLayoutManager(requireContext(), ScreenHelper.getGridColumns(requireContext()))
         binding.recyclerViewRiwayat.adapter = adapter
     }
 

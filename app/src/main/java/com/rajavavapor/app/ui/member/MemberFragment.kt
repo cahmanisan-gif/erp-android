@@ -8,9 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.rajavavapor.app.databinding.FragmentMemberBinding
+import com.rajavavapor.app.util.ScreenHelper
 
 class MemberFragment : Fragment() {
 
@@ -28,7 +29,7 @@ class MemberFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         adapter = MemberAdapter()
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), ScreenHelper.getGridColumns(requireContext()))
         binding.recyclerView.adapter = adapter
 
         binding.etSearch.addTextChangedListener(object : TextWatcher {
