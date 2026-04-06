@@ -7,10 +7,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.google.android.material.snackbar.Snackbar
+import android.graphics.Color
+import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.rajavavapor.app.R
 import com.rajavavapor.app.data.OwnerDashboardData
 import com.rajavavapor.app.data.SessionManager
 import com.rajavavapor.app.data.StatsData
+import com.rajavavapor.app.data.TrendHari
 import com.rajavavapor.app.databinding.FragmentDashboardBinding
 import androidx.navigation.fragment.findNavController
 import com.rajavavapor.app.util.AnimationHelper
@@ -135,6 +142,61 @@ class DashboardFragment : Fragment() {
             "${i + 1}. ${c.nama ?: "-"}  •  ${c.omzet.toRupiah()}"
         }.joinToString("\n").ifEmpty { "Belum ada data" }
         binding.tvTopCabang.text = cabangText
+
+        // Chart
+        setupChart(data.trend7Hari)
+    }
+
+    private fun setupChart(trends: List<TrendHari>?) {
+        val chart = binding.chartTrend ?: return
+        if (trends.isNullOrEmpty()) {
+            chart.visibility = View.GONE
+            return
+        }
+
+        val entries = trends.mapIndexed { i, t -> Entry(i.toFloat(), t.omzet.toFloat()) }
+        val labels = trends.map { it.tgl.takeLast(5) } // "MM-DD"
+
+        val dataSet = LineDataSet(entries, "Omzet").apply {
+            color = Color.parseColor("#C1121F")
+            lineWidth = 2.5f
+            setCircleColor(Color.parseColor("#C1121F"))
+            circleRadius = 4f
+            circleHoleRadius = 2f
+            setDrawValues(false)
+            setDrawFilled(true)
+            fillColor = Color.parseColor("#C1121F")
+            fillAlpha = 30
+            mode = LineDataSet.Mode.CUBIC_BEZIER
+        }
+
+        chart.apply {
+            data = LineData(dataSet)
+            description.isEnabled = false
+            legend.isEnabled = false
+            setTouchEnabled(true)
+            setScaleEnabled(false)
+            animateX(800)
+
+            xAxis.apply {
+                position = XAxis.XAxisPosition.BOTTOM
+                setDrawGridLines(false)
+                granularity = 1f
+                textColor = Color.parseColor("#888888")
+                textSize = 10f
+                valueFormatter = IndexAxisValueFormatter(labels)
+            }
+
+            axisLeft.apply {
+                setDrawGridLines(true)
+                gridColor = Color.parseColor("#F0F0F0")
+                textColor = Color.parseColor("#888888")
+                textSize = 10f
+            }
+
+            axisRight.isEnabled = false
+            invalidate()
+        }
     }
 
     private fun showStatsDashboard(data: StatsData) {
