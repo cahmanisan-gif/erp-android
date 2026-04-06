@@ -11,7 +11,8 @@
         android:id="@+id/ivLogo"
         android:layout_width="@dimen/logo_size"
         android:layout_height="@dimen/logo_size"
-        android:src="@mipmap/ic_launcher"
+        android:src="@mipmap/ic_launcher_legacy"
+        android:scaleType="fitCenter"
         android:contentDescription="Logo"
         app:layout_constraintBottom_toTopOf="@+id/tvSubtitle"
         app:layout_constraintEnd_toEndOf="parent"
@@ -74,15 +75,15 @@
                 android:layout_height="wrap_content"
                 android:hint="Username"
                 app:boxStrokeColor="#F5F5F0"
-                app:hintTextColor="#AAAAAA"
-                app:boxBackgroundColor="#1AFFFFFF">
+                app:hintTextColor="#999999"
+                app:boxBackgroundColor="#F5F5F0">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etUsername"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:textColor="#F5F5F0"
+                    android:textColor="#111111"
                     android:textSize="@dimen/text_body"
                     android:fontFamily="sans-serif"
                     android:imeOptions="actionNext" />
@@ -96,17 +97,17 @@
                 android:layout_marginTop="16dp"
                 android:hint="Password"
                 app:boxStrokeColor="#F5F5F0"
-                app:hintTextColor="#AAAAAA"
-                app:boxBackgroundColor="#1AFFFFFF"
+                app:hintTextColor="#999999"
+                app:boxBackgroundColor="#F5F5F0"
                 app:passwordToggleEnabled="true"
-                app:passwordToggleTint="#F5F5F0">
+                app:passwordToggleTint="#666666">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
-                    android:textColor="#F5F5F0"
+                    android:textColor="#111111"
                     android:textSize="@dimen/text_body"
                     android:fontFamily="sans-serif"
                     android:imeOptions="actionDone" />
