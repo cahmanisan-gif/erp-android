@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/gray_bg">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dark_bg"
+        android:orientation="vertical"
+        android:padding="@dimen/header_padding">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Absensi"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_header"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvStatusText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Memuat status..."
+            android:textColor="#AAAAAA"
+            android:textSize="@dimen/text_small" />
+    </LinearLayout>
+
+    <!-- Split Pane: Action Left + Riwayat Right -->
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="@dimen/screen_padding">
+
+            <!-- LEFT: Action Panel -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:layout_marginEnd="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/card_padding">
+
+                        <ImageView
+                            android:id="@+id/imgSelfiePreview"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/selfie_preview_height"
+                            android:scaleType="centerCrop"
+                            android:visibility="gone"
+                            android:layout_marginBottom="12dp"
+                            android:background="#F0F0F0" />
+
+                        <TextView
+                            android:id="@+id/tvLocationInfo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Lokasi belum diambil"
+                            android:textSize="@dimen/text_small"
+                            android:textColor="#999"
+                            android:layout_marginBottom="8dp" />
+
+                        <TextView
+                            android:id="@+id/tvBarcodeInfo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_small"
+                            android:textColor="#999"
+                            android:layout_marginBottom="12dp"
+                            android:visibility="gone" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="12dp">
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnSelfie"
+                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginEnd="6dp"
+                                android:text="Ambil Foto"
+                                android:textColor="@color/brand_red"
+                                app:strokeColor="@color/brand_red"
+                                app:icon="@android:drawable/ic_menu_camera"
+                                app:iconTint="@color/brand_red" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnBarcode"
+                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="6dp"
+                                android:text="Scan Barcode"
+                                android:textColor="@color/brand_red"
+                                app:strokeColor="@color/brand_red"
+                                app:icon="@android:drawable/ic_menu_search"
+                                app:iconTint="@color/brand_red" />
+                        </LinearLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnClockIn"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/button_height"
+                            android:text="CLOCK IN"
+                            android:textSize="@dimen/text_title"
+                            android:textStyle="bold"
+                            app:backgroundTint="@color/brand_red"
+                            app:cornerRadius="12dp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnClockOut"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/button_height"
+                            android:text="CLOCK OUT"
+                            android:textSize="@dimen/text_title"
+                            android:textStyle="bold"
+                            android:visibility="gone"
+                            app:backgroundTint="@color/dark_bg"
+                            app:cornerRadius="12dp" />
+
+                        <ProgressBar
+                            android:id="@+id/progressSubmit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:visibility="gone"
+                            android:indeterminateTint="@color/brand_red" />
+                    </LinearLayout>
+                </ScrollView>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- RIGHT: Riwayat Panel -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
+                android:layout_marginStart="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="@dimen/card_padding">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Riwayat Bulan Ini"
+                        android:textSize="@dimen/text_title"
+                        android:textStyle="bold"
+                        android:textColor="@color/dark_bg"
+                        android:layout_marginBottom="8dp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewRiwayat"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/tvEmptyRiwayat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Belum ada data absensi"
+                        android:textAlignment="center"
+                        android:textColor="#999"
+                        android:textSize="@dimen/text_body"
+                        android:padding="@dimen/screen_padding"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</LinearLayout>

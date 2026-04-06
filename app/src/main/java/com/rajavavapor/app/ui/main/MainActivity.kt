@@ -5,6 +5,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigationrail.NavigationRailView
 import com.rajavavapor.app.R
 import com.rajavavapor.app.data.SessionManager
 import com.rajavavapor.app.databinding.ActivityMainBinding
@@ -26,7 +28,12 @@ class MainActivity : AppCompatActivity() {
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
 
-        binding.bottomNavigation.setupWithNavController(navController)
+        // Tablet: NavigationRail, Phone: BottomNavigation
+        val navRail = findViewById<NavigationRailView>(R.id.nav_rail)
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+
+        navRail?.setupWithNavController(navController)
+            ?: bottomNav?.setupWithNavController(navController)
     }
 
     fun logout() {
