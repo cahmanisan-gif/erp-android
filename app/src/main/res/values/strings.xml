@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Raja Vapor</string>
+    <string name="absensi_title">Absensi</string>
+    <string name="belum_clock_in">Belum clock in hari ini</string>
+    <string name="sudah_clock_in">Sudah clock in pukul %s</string>
+    <string name="sudah_clock_out">Sudah clock out pukul %s</string>
+    <string name="ambil_foto">Ambil Foto Selfie</string>
+    <string name="scan_barcode">Scan Barcode</string>
+    <string name="clock_in">CLOCK IN</string>
+    <string name="clock_out">CLOCK OUT</string>
+    <string name="riwayat_title">Riwayat Bulan Ini</string>
 </resources>

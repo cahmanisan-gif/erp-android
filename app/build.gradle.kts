@@ -63,4 +63,19 @@ dependencies {
 
     // Image loading
     implementation("com.github.bumptech.glide:glide:4.16.0")
+
+    // CameraX
+    implementation("androidx.camera:camera-core:1.3.1")
+    implementation("androidx.camera:camera-camera2:1.3.1")
+    implementation("androidx.camera:camera-lifecycle:1.3.1")
+    implementation("androidx.camera:camera-view:1.3.1")
+
+    // ML Kit Barcode Scanning
+    implementation("com.google.mlkit:barcode-scanning:17.2.0")
+
+    // Google Play Services Location (GPS)
+    implementation("com.google.android.gms:play-services-location:21.1.0")
+
+    // Activity Result API
+    implementation("androidx.activity:activity-ktx:1.8.2")
 }

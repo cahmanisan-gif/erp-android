@@ -15,6 +15,11 @@
         android:label="Notifikasi" />
 
     <fragment
+        android:id="@+id/navigation_absensi"
+        android:name="com.rajavavapor.app.ui.absensi.AbsensiFragment"
+        android:label="Absensi" />
+
+    <fragment
         android:id="@+id/navigation_member"
         android:name="com.rajavavapor.app.ui.member.MemberFragment"
         android:label="Member" />

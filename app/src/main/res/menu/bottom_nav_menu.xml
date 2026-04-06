@@ -12,6 +12,11 @@
         android:title="Notifikasi" />
 
     <item
+        android:id="@+id/navigation_absensi"
+        android:icon="@drawable/ic_nav_absensi"
+        android:title="Absensi" />
+
+    <item
         android:id="@+id/navigation_member"
         android:icon="@drawable/ic_nav_member"
         android:title="Member" />

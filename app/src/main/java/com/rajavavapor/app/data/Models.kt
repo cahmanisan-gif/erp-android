@@ -115,6 +115,50 @@ data class MemberItem(
     @SerializedName("total_transaksi") val totalTransaksi: Int?
 )
 
+// ── Absensi ──────────────────────────────────────────────────────────────────
+
+data class AbsensiClockResponse(
+    val success: Boolean,
+    val message: String?,
+    val data: AbsensiClockData?
+)
+
+data class AbsensiClockData(
+    val waktu: String?,
+    val jarak: Double?,
+    val valid: Boolean?
+)
+
+data class AbsensiStatusResponse(
+    val success: Boolean,
+    val data: AbsensiStatusData?
+)
+
+data class AbsensiStatusData(
+    val status: String?,
+    @SerializedName("clock_in") val clockIn: String?,
+    @SerializedName("clock_out") val clockOut: String?,
+    val izin: String?,
+    val cabang: String?,
+    val tanggal: String?
+)
+
+data class AbsensiRiwayatResponse(
+    val success: Boolean,
+    val data: List<AbsensiRiwayatItem>?,
+    val summary: AbsensiSummary?
+)
+
+data class AbsensiRiwayatItem(
+    val tanggal: String,
+    val masuk: String?,
+    val pulang: String?
+)
+
+data class AbsensiSummary(
+    val hadir: Int?
+)
+
 // ── Generic ───────────────────────────────────────────────────────────────────
 
 data class SimpleResponse(val success: Boolean, val message: String?)
