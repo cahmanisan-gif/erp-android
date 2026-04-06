@@ -60,7 +60,7 @@
                 android:layout_marginStart="8dp"
                 app:backgroundTint="@color/brand_red"
                 app:cornerRadius="12dp"
-                app:icon="@drawable/ic_menu_pos"
+                app:icon="@drawable/ic_menu_scan"
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
                 app:iconSize="24dp"

@@ -31,14 +31,14 @@ object MenuConfig {
 
     fun getMenuItems(): List<MenuItem> = listOf(
         // ── Utama ──
-        MenuItem("dashboard", "Dashboard", R.drawable.ic_nav_dashboard, R.color.brand_red, 0, R.id.navigation_dashboard),
-        MenuItem("absensi", "Absensi", R.drawable.ic_nav_absensi, R.color.success_green, 0, R.id.navigation_absensi),
-        MenuItem("notifikasi", "Notifikasi", R.drawable.ic_nav_notifikasi, R.color.brand_red, 0, R.id.navigation_notifikasi),
+        MenuItem("dashboard", "Dashboard", R.drawable.ic_menu_dashboard, R.color.brand_red, 0, R.id.navigation_dashboard),
+        MenuItem("absensi", "Absensi", R.drawable.ic_menu_absensi, R.color.success_green, 0, R.id.navigation_absensi),
+        MenuItem("notifikasi", "Notifikasi", R.drawable.ic_menu_notifikasi, R.color.brand_red, 0, R.id.navigation_notifikasi),
 
         // ── Penjualan ──
         MenuItem("pos", "POS / Kasir", R.drawable.ic_menu_pos, R.color.brand_red, 1, R.id.navigation_pos),
         MenuItem("invoice", "Invoice", R.drawable.ic_menu_invoice, R.color.dark_bg, 1, R.id.navigation_invoice),
-        MenuItem("member", "Member", R.drawable.ic_nav_member, R.color.brand_dark, 1, R.id.navigation_member),
+        MenuItem("member", "Member", R.drawable.ic_menu_member, R.color.brand_dark, 1, R.id.navigation_member),
         MenuItem("customer", "Customer", R.drawable.ic_menu_customer, R.color.success_green, 1, R.id.navigation_customer),
 
         // ── Stok & Produk ──
