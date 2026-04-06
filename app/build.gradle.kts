@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "com.rajavavapor.app"
-    compileSdk = 34
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.rajavavapor.app"
         minSdk = 26
-        targetSdk = 34
+        targetSdk = 36
         versionCode = 3
         versionName = "2.1.0"
     }
