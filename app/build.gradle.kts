@@ -15,6 +15,15 @@ android {
         versionName = "2.1.0"
     }
 
+    signingConfigs {
+        create("release") {
+            storeFile = file("../release-keystore.jks")
+            storePassword = "rajavapor2026"
+            keyAlias = "portal"
+            keyPassword = "rajavapor2026"
+        }
+    }
+
     buildFeatures {
         viewBinding = true
     }
@@ -22,6 +31,7 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = true
+            signingConfig = signingConfigs.getByName("release")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
