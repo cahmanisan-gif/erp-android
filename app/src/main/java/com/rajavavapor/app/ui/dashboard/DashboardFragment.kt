@@ -72,25 +72,44 @@ class DashboardFragment : Fragment() {
     }
 
     private fun setupDashboardClicks() {
-        // Request Pending → Notifikasi tab
-        binding.tvStatRequest?.setOnClickListener {
-            findNavController().navigate(R.id.navigation_notifikasi)
+        // ── Owner cards ──
+        // Cash → Kas
+        binding.tvCash?.setOnClickListener {
+            findNavController().navigate(R.id.navigation_kas)
         }
-        // Retur Pending → Notifikasi tab
+        // Transfer/Non-Cash → Kas
+        binding.tvNonCash?.setOnClickListener {
+            findNavController().navigate(R.id.navigation_kas)
+        }
+        // Retur Pending → Retur
         binding.tvReturPending?.setOnClickListener {
-            findNavController().navigate(R.id.navigation_notifikasi)
+            findNavController().navigate(R.id.navigation_retur)
         }
-        // Staff Hadir → Absensi tab
+        // Pengeluaran → Kas
+        binding.tvPengeluaran?.setOnClickListener {
+            findNavController().navigate(R.id.navigation_kas)
+        }
+        // Staff Hadir → Absensi
         binding.tvStaffHadir?.setOnClickListener {
             findNavController().navigate(R.id.navigation_absensi)
         }
-        // Invoice → Member tab
-        binding.tvStatInvoice?.setOnClickListener {
-            findNavController().navigate(R.id.navigation_member)
+
+        // ── Basic stats cards ──
+        // Request Pending → Request Produk
+        binding.tvStatRequest?.setOnClickListener {
+            findNavController().navigate(R.id.navigation_request)
         }
-        // Customer → Member tab
+        // Invoice → Invoice
+        binding.tvStatInvoice?.setOnClickListener {
+            findNavController().navigate(R.id.navigation_invoice)
+        }
+        // Customer → Customer
         binding.tvStatCustomer?.setOnClickListener {
-            findNavController().navigate(R.id.navigation_member)
+            findNavController().navigate(R.id.navigation_customer)
+        }
+        // Cabang → Cabang
+        binding.tvStatCabang?.setOnClickListener {
+            findNavController().navigate(R.id.navigation_cabang)
         }
     }
 
