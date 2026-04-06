@@ -2,21 +2,25 @@ package com.rajavavapor.app.ui.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.view.animation.AnimationUtils
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigationrail.NavigationRailView
 import com.rajavavapor.app.R
+import com.rajavavapor.app.api.ApiClient
 import com.rajavavapor.app.data.SessionManager
 import com.rajavavapor.app.databinding.ActivityMainBinding
 import com.rajavavapor.app.ui.login.LoginActivity
-import androidx.lifecycle.lifecycleScope
-import com.rajavavapor.app.api.ApiClient
+import com.rajavavapor.app.util.NetworkMonitor
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -32,30 +36,44 @@ class MainActivity : AppCompatActivity() {
 
         session = SessionManager(this)
 
+        // Init API client with auth interceptor (handles 401 → auto logout)
+        ApiClient.init(applicationContext)
+
+        // Init network monitor
+        NetworkMonitor.init(applicationContext)
+
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
 
-        // Tablet: NavigationRail, Phone: BottomNavigation
         val navRail = findViewById<NavigationRailView>(R.id.nav_rail)
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
 
         navRail?.setupWithNavController(navController)
             ?: bottomNav?.setupWithNavController(navController)
 
-        // Fetch unread notification badge
         fetchNotificationBadge(bottomNav, navRail)
 
         // Handle system bar insets
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { _, insets ->
             val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            // Fragment container gets top padding (status bar)
             binding.navHostFragment.updatePadding(top = bars.top)
-            // Bottom nav gets bottom padding (navigation bar)
             bottomNav?.updatePadding(bottom = bars.bottom)
-            // Tablet rail gets top + left padding
             navRail?.updatePadding(top = bars.top, left = bars.left)
             insets
+        }
+
+        // Observe network state — show/hide offline banner
+        val bannerOffline = findViewById<View>(R.id.bannerOffline)
+        NetworkMonitor.isOnline.observe(this) { online ->
+            if (!online) {
+                bannerOffline?.isVisible = true
+                bannerOffline?.startAnimation(
+                    AnimationUtils.loadAnimation(this, android.R.anim.slide_in_left)
+                )
+            } else {
+                bannerOffline?.isVisible = false
+            }
         }
     }
 

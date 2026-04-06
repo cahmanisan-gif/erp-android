@@ -12,6 +12,7 @@ import com.rajavavapor.app.data.SessionManager
 import com.rajavavapor.app.data.StatsData
 import com.rajavavapor.app.databinding.FragmentDashboardBinding
 import androidx.navigation.fragment.findNavController
+import com.rajavavapor.app.util.AnimationHelper
 import java.text.NumberFormat
 import java.util.Locale
 
@@ -89,10 +90,10 @@ class DashboardFragment : Fragment() {
         binding.layoutOwner.visibility = View.VISIBLE
         binding.layoutBasicStats.visibility = View.GONE
 
-        binding.tvOmzetHariIni.text = data.omzetHariIni.toRupiah()
-        binding.tvTrxHariIni.text = "${data.trxHariIni} transaksi"
-        binding.tvOmzetBulan.text = data.omzetBulanIni.toRupiah()
-        binding.tvTrxBulan.text = "${data.trxBulanIni} transaksi"
+        AnimationHelper.animateRupiah(binding.tvOmzetHariIni, data.omzetHariIni)
+        AnimationHelper.animateCounterWithSuffix(binding.tvTrxHariIni, data.trxHariIni, "transaksi")
+        AnimationHelper.animateRupiah(binding.tvOmzetBulan, data.omzetBulanIni)
+        AnimationHelper.animateCounterWithSuffix(binding.tvTrxBulan, data.trxBulanIni, "transaksi")
 
         val growth = data.growthVsKemarin
         if (growth != null) {
@@ -106,10 +107,10 @@ class DashboardFragment : Fragment() {
             binding.tvGrowth.visibility = View.GONE
         }
 
-        binding.tvCash.text = data.cashHariIni.toRupiah()
-        binding.tvNonCash.text = data.nonCashHariIni.toRupiah()
-        binding.tvReturPending.text = data.returPending.toString()
-        binding.tvPengeluaran.text = data.pengeluaranBulan.toRupiah()
+        AnimationHelper.animateRupiah(binding.tvCash, data.cashHariIni)
+        AnimationHelper.animateRupiah(binding.tvNonCash, data.nonCashHariIni)
+        AnimationHelper.animateCounter(binding.tvReturPending, data.returPending)
+        AnimationHelper.animateRupiah(binding.tvPengeluaran, data.pengeluaranBulan)
         binding.tvStaffHadir.text = "${data.staffHadir}/${data.staffTotal}"
 
         // Top produk
@@ -138,10 +139,10 @@ class DashboardFragment : Fragment() {
         binding.layoutOwner.visibility = View.GONE
         binding.layoutBasicStats.visibility = View.VISIBLE
 
-        binding.tvStatCabang.text = data.cabang.toString()
-        binding.tvStatInvoice.text = data.invoice.toString()
-        binding.tvStatCustomer.text = data.customer.toString()
-        binding.tvStatRequest.text = data.request.toString()
+        AnimationHelper.animateCounter(binding.tvStatCabang, data.cabang)
+        AnimationHelper.animateCounter(binding.tvStatInvoice, data.invoice)
+        AnimationHelper.animateCounter(binding.tvStatCustomer, data.customer)
+        AnimationHelper.animateCounter(binding.tvStatRequest, data.request)
     }
 
     private fun Double.toRupiah(): String {

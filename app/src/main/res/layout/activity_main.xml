@@ -7,6 +7,9 @@
     android:orientation="vertical"
     android:background="@color/gray_bg">
 
+    <!-- Offline banner -->
+    <include layout="@layout/banner_offline" />
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
@@ -23,6 +26,7 @@
         android:background="@color/dark_bg"
         app:itemIconTint="@color/bottom_nav_color"
         app:itemTextColor="@color/bottom_nav_color"
+        app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_nav_menu" />
 
 </LinearLayout>
