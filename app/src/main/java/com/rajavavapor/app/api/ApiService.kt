@@ -79,6 +79,9 @@ interface ApiService {
 
     // ── Face Login ───────────────────────────────────────────────────────────
 
+    @GET("absensi/api/face/cabang")
+    suspend fun getFaceCabang(): FaceCabangResponse
+
     @GET("absensi/api/face/employees")
     suspend fun getFaceEmployees(
         @Query("cabang_id") cabangId: Int
@@ -88,6 +91,15 @@ interface ApiService {
     @POST("absensi/api/face/verify")
     suspend fun verifyFace(
         @Part foto: MultipartBody.Part,
-        @Part("personnel_id") personnelId: RequestBody
+        @Part("user_id") userId: RequestBody,
+        @Part("confidence") confidence: RequestBody
     ): FaceVerifyResponse
+
+    @Multipart
+    @POST("absensi/api/face/register")
+    suspend fun registerFace(
+        @Header("Authorization") token: String,
+        @Part foto: MultipartBody.Part,
+        @Part("user_id") userId: RequestBody
+    ): FaceRegisterResponse
 }
