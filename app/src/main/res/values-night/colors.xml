@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark mode colors -->
+    <color name="brand_red">#C1121F</color>
+    <color name="brand_dark">#A4161A</color>
+    <color name="brand_light">#3D1F1F</color>
+    <color name="dark_bg">#121212</color>
+    <color name="white">#FFFFFF</color>
+    <color name="gray_bg">#1E1E1E</color>
+    <color name="success_green">#4CAF50</color>
+
+    <!-- Dark mode specific -->
+    <color name="card_bg">#2C2C2C</color>
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#BBBBBB</color>
+    <color name="divider">#333333</color>
+</resources>

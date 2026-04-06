@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/item_margin_horizontal"
+    android:layout_marginVertical="@dimen/item_margin_vertical"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/card_padding">
+
+        <!-- Title placeholder -->
+        <View
+            android:layout_width="180dp"
+            android:layout_height="16dp"
+            android:background="#E0E0E0" />
+
+        <!-- Subtitle placeholder -->
+        <View
+            android:layout_width="120dp"
+            android:layout_height="12dp"
+            android:layout_marginTop="8dp"
+            android:background="#EEEEEE" />
+
+        <!-- Content row placeholder -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="80dp"
+                android:layout_height="12dp"
+                android:background="#EEEEEE" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <View
+                android:layout_width="60dp"
+                android:layout_height="12dp"
+                android:background="#E0E0E0" />
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
