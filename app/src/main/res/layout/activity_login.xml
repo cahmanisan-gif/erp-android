@@ -4,40 +4,39 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_bg">
+    android:background="#000000">
 
-    <!-- Logo + Title -->
-    <TextView
-        android:id="@+id/tvAppName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="RAJA VAPOR"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        android:textColor="@color/brand_red"
-        android:letterSpacing="0.2"
+    <!-- Logo Image -->
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@mipmap/ic_launcher"
+        android:contentDescription="Logo"
         app:layout_constraintBottom_toTopOf="@+id/tvSubtitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintVertical_bias="0.35" />
+        app:layout_constraintVertical_bias="0.28" />
 
+    <!-- PORTAL text -->
     <TextView
         android:id="@+id/tvSubtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="PORTAL"
-        android:textSize="14sp"
-        android:textColor="#AAAAAA"
-        android:letterSpacing="0.15"
-        android:layout_marginTop="8dp"
+        android:textSize="16sp"
+        android:textColor="#F5F5F0"
+        android:fontFamily="sans-serif-medium"
+        android:letterSpacing="0.4"
+        android:layout_marginTop="12dp"
         app:layout_constraintBottom_toTopOf="@+id/cardLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAppName" />
+        app:layout_constraintTop_toBottomOf="@+id/ivLogo" />
 
-    <!-- Login Card -->
+    <!-- Login Card — border putih tulang -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardLogin"
         android:layout_width="0dp"
@@ -45,11 +44,11 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginTop="32dp"
-        app:cardBackgroundColor="#2C2C2C"
+        app:cardBackgroundColor="#111111"
         app:cardCornerRadius="20dp"
-        app:cardElevation="12dp"
+        app:cardElevation="0dp"
         app:strokeWidth="1dp"
-        app:strokeColor="#10000000"
+        app:strokeColor="#3AF5F5F0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,29 +66,34 @@
                 android:text="Masuk ke Akun"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="@color/white"
+                android:textColor="#F5F5F0"
+                android:fontFamily="sans-serif-medium"
                 android:layout_marginBottom="24dp" />
 
-            <!-- Username -->
+            <!-- Username — outline putih tulang -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilUsername"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Username"
-                app:boxStrokeColor="@color/brand_red"
-                app:hintTextColor="@color/brand_red">
+                app:boxStrokeColor="#F5F5F0"
+                app:boxStrokeWidthFocused="2dp"
+                app:hintTextColor="#AAAAAA"
+                app:boxBackgroundColor="#1AFFFFFF">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etUsername"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:textColor="@color/white"
+                    android:textColor="#F5F5F0"
+                    android:textColorHint="#888888"
+                    android:fontFamily="sans-serif"
                     android:imeOptions="actionNext" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Password -->
+            <!-- Password — outline putih tulang -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilPassword"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -97,17 +101,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:hint="Password"
-                app:boxStrokeColor="@color/brand_red"
-                app:hintTextColor="@color/brand_red"
+                app:boxStrokeColor="#F5F5F0"
+                app:boxStrokeWidthFocused="2dp"
+                app:hintTextColor="#AAAAAA"
+                app:boxBackgroundColor="#1AFFFFFF"
                 app:passwordToggleEnabled="true"
-                app:passwordToggleTint="@color/brand_red">
+                app:passwordToggleTint="#F5F5F0">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
-                    android:textColor="@color/white"
+                    android:textColor="#F5F5F0"
+                    android:textColorHint="#888888"
+                    android:fontFamily="sans-serif"
                     android:imeOptions="actionDone" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -121,15 +129,17 @@
                 android:visibility="gone"
                 android:indeterminateTint="@color/brand_red" />
 
-            <!-- Login button -->
+            <!-- Login button — merah solid -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnLogin"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="24dp"
                 android:text="MASUK"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                android:fontFamily="sans-serif-medium"
+                android:letterSpacing="0.1"
                 app:backgroundTint="@color/brand_red"
                 app:cornerRadius="16dp" />
 
@@ -137,7 +147,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="20dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -145,24 +155,25 @@
                     android:layout_width="0dp"
                     android:layout_height="1dp"
                     android:layout_weight="1"
-                    android:background="#444" />
+                    android:background="#333333" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="12dp"
+                    android:paddingHorizontal="16dp"
                     android:text="atau"
-                    android:textColor="#888"
-                    android:textSize="12sp" />
+                    android:textColor="#666666"
+                    android:textSize="12sp"
+                    android:fontFamily="sans-serif" />
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="1dp"
                     android:layout_weight="1"
-                    android:background="#444" />
+                    android:background="#333333" />
             </LinearLayout>
 
-            <!-- Face Login button -->
+            <!-- Face Login — outline putih tulang -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnFaceLogin"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -172,12 +183,14 @@
                 android:text="LOGIN DENGAN WAJAH"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                android:textColor="@color/brand_red"
-                app:strokeColor="@color/brand_red"
-                app:strokeWidth="2dp"
+                android:textColor="#F5F5F0"
+                android:fontFamily="sans-serif-medium"
+                android:letterSpacing="0.05"
+                app:strokeColor="#3AF5F5F0"
+                app:strokeWidth="1dp"
                 app:cornerRadius="16dp"
                 app:icon="@android:drawable/ic_menu_camera"
-                app:iconTint="@color/brand_red"
+                app:iconTint="#F5F5F0"
                 app:iconGravity="textStart" />
 
         </LinearLayout>

@@ -4,25 +4,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_bg"
-    android:fitsSystemWindows="true">
+    android:background="#000000">
 
-    <!-- Logo + Title -->
-    <TextView
-        android:id="@+id/tvAppName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="RAJA VAPOR"
-        android:textSize="@dimen/text_logo"
-        android:textStyle="bold"
-        android:textColor="@color/brand_red"
-        android:letterSpacing="0.1"
+    <!-- Logo Image -->
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="@dimen/logo_size"
+        android:layout_height="@dimen/logo_size"
+        android:src="@mipmap/ic_launcher"
+        android:contentDescription="Logo"
         app:layout_constraintBottom_toTopOf="@+id/tvSubtitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintVertical_bias="0.25" />
 
     <TextView
         android:id="@+id/tvSubtitle"
@@ -30,22 +26,26 @@
         android:layout_height="wrap_content"
         android:text="PORTAL"
         android:textSize="@dimen/text_subtitle"
-        android:textColor="#AAAAAA"
-        android:layout_marginTop="4dp"
+        android:textColor="#F5F5F0"
+        android:fontFamily="sans-serif-medium"
+        android:letterSpacing="0.4"
+        android:layout_marginTop="12dp"
         app:layout_constraintBottom_toTopOf="@+id/cardLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAppName" />
+        app:layout_constraintTop_toBottomOf="@+id/ivLogo" />
 
-    <!-- Login Card — max 480dp width on tablet -->
+    <!-- Login Card — max 480dp tablet -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardLogin"
         android:layout_width="480dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        app:cardBackgroundColor="#2C2C2C"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="8dp"
+        app:cardBackgroundColor="#111111"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="0dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="#3AF5F5F0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,8 +63,9 @@
                 android:text="Masuk ke Akun"
                 android:textSize="@dimen/text_header"
                 android:textStyle="bold"
-                android:textColor="@color/white"
-                android:layout_marginBottom="20dp" />
+                android:textColor="#F5F5F0"
+                android:fontFamily="sans-serif-medium"
+                android:layout_marginBottom="24dp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilUsername"
@@ -72,16 +73,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Username"
-                app:boxStrokeColor="@color/brand_red"
-                app:hintTextColor="@color/brand_red">
+                app:boxStrokeColor="#F5F5F0"
+                app:hintTextColor="#AAAAAA"
+                app:boxBackgroundColor="#1AFFFFFF">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etUsername"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:textColor="@color/white"
+                    android:textColor="#F5F5F0"
                     android:textSize="@dimen/text_body"
+                    android:fontFamily="sans-serif"
                     android:imeOptions="actionNext" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -90,20 +93,22 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="16dp"
                 android:hint="Password"
-                app:boxStrokeColor="@color/brand_red"
-                app:hintTextColor="@color/brand_red"
+                app:boxStrokeColor="#F5F5F0"
+                app:hintTextColor="#AAAAAA"
+                app:boxBackgroundColor="#1AFFFFFF"
                 app:passwordToggleEnabled="true"
-                app:passwordToggleTint="@color/brand_red">
+                app:passwordToggleTint="#F5F5F0">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
-                    android:textColor="@color/white"
+                    android:textColor="#F5F5F0"
                     android:textSize="@dimen/text_body"
+                    android:fontFamily="sans-serif"
                     android:imeOptions="actionDone" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -120,17 +125,18 @@
                 android:id="@+id/btnLogin"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/button_height"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
                 android:text="MASUK"
                 android:textSize="@dimen/text_title"
                 android:textStyle="bold"
+                android:fontFamily="sans-serif-medium"
                 app:backgroundTint="@color/brand_red"
-                app:cornerRadius="12dp" />
+                app:cornerRadius="16dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="20dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -138,21 +144,21 @@
                     android:layout_width="0dp"
                     android:layout_height="1dp"
                     android:layout_weight="1"
-                    android:background="#444" />
+                    android:background="#333333" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="12dp"
+                    android:paddingHorizontal="16dp"
                     android:text="atau"
-                    android:textColor="#888"
+                    android:textColor="#666666"
                     android:textSize="@dimen/text_small" />
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="1dp"
                     android:layout_weight="1"
-                    android:background="#444" />
+                    android:background="#333333" />
             </LinearLayout>
 
             <com.google.android.material.button.MaterialButton
@@ -160,15 +166,17 @@
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/button_height"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="16dp"
                 android:text="LOGIN DENGAN WAJAH"
                 android:textSize="@dimen/text_body"
                 android:textStyle="bold"
-                android:textColor="@color/brand_red"
-                app:strokeColor="@color/brand_red"
-                app:cornerRadius="12dp"
+                android:textColor="#F5F5F0"
+                android:fontFamily="sans-serif-medium"
+                app:strokeColor="#3AF5F5F0"
+                app:strokeWidth="1dp"
+                app:cornerRadius="16dp"
                 app:icon="@android:drawable/ic_menu_camera"
-                app:iconTint="@color/brand_red"
+                app:iconTint="#F5F5F0"
                 app:iconGravity="textStart" />
 
         </LinearLayout>
