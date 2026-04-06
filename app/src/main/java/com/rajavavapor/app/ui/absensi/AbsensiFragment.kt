@@ -19,6 +19,7 @@ import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.rajavavapor.app.databinding.FragmentAbsensiBinding
 import com.rajavavapor.app.ui.barcode.BarcodeScannerActivity
+import com.rajavavapor.app.util.AnimationHelper
 import com.rajavavapor.app.util.LocationHelper
 import com.rajavavapor.app.util.LocationResult
 import com.rajavavapor.app.util.PhotoHelper
@@ -132,10 +133,14 @@ class AbsensiFragment : Fragment() {
         }
 
         binding.btnClockIn.setOnClickListener {
+            AnimationHelper.hapticClick(it)
+            AnimationHelper.bounceClick(it)
             submitClock("masuk")
         }
 
         binding.btnClockOut.setOnClickListener {
+            AnimationHelper.hapticClick(it)
+            AnimationHelper.bounceClick(it)
             submitClock("pulang")
         }
     }

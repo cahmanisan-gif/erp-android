@@ -11,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import com.google.android.material.snackbar.Snackbar
 import com.rajavavapor.app.data.SessionManager
+import com.rajavavapor.app.util.AnimationHelper
 import com.rajavavapor.app.databinding.ActivityLoginBinding
 import com.rajavavapor.app.ui.main.MainActivity
 
@@ -32,6 +33,8 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.btnLogin.setOnClickListener {
+            AnimationHelper.hapticClick(it)
+            AnimationHelper.bounceClick(it)
             val username = binding.etUsername.text?.toString()?.trim() ?: ""
             val password = binding.etPassword.text?.toString() ?: ""
             if (username.isEmpty() || password.isEmpty()) {
