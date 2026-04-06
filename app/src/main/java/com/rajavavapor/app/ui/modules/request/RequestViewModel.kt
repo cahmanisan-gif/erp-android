@@ -11,9 +11,22 @@ import kotlinx.coroutines.launch
 
 class RequestViewModel : ViewModel() {
 
+    private var allItems = listOf<RequestProdukItem>()
     val items = MutableLiveData<List<RequestProdukItem>>(emptyList())
     val isLoading = MutableLiveData(false)
     val errorMessage = MutableLiveData<String?>()
+
+    fun filter(query: String) {
+        if (query.length < 2) {
+            items.value = allItems
+            return
+        }
+        val q = query.lowercase()
+        items.value = allItems.filter {
+            (it.namaProduk?.lowercase()?.contains(q) == true) ||
+            (it.namaCabang?.lowercase()?.contains(q) == true)
+        }
+    }
 
     fun load(context: Context) {
         val token = SessionManager(context).bearerToken()
@@ -22,7 +35,10 @@ class RequestViewModel : ViewModel() {
             errorMessage.value = null
             try {
                 val response = ApiClient.service.getRequestProduk(token)
-                if (response.success) items.value = response.data ?: emptyList()
+                if (response.success) {
+                    allItems = response.data ?: emptyList()
+                    items.value = allItems
+                }
                 else errorMessage.value = "Gagal memuat data request produk"
             } catch (e: Exception) {
                 errorMessage.value = "Koneksi gagal: ${e.message}"

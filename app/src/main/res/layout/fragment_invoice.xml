@@ -22,6 +22,25 @@
             android:textColor="@color/white"
             android:textSize="@dimen/text_header"
             android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Cari..."
+            app:boxStrokeColor="@color/brand_red"
+            app:hintTextColor="#AAAAAA"
+            app:startIconDrawable="@android:drawable/ic_menu_search"
+            app:startIconTint="@color/brand_red">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:inputType="text"
+                android:imeOptions="actionSearch" />
+        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
     <ProgressBar

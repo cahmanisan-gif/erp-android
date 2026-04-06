@@ -11,9 +11,22 @@ import kotlinx.coroutines.launch
 
 class ReturListViewModel : ViewModel() {
 
+    private var allItems = listOf<ReturItem>()
     val items = MutableLiveData<List<ReturItem>>(emptyList())
     val isLoading = MutableLiveData(false)
     val errorMessage = MutableLiveData<String?>()
+
+    fun filter(query: String) {
+        if (query.length < 2) {
+            items.value = allItems
+            return
+        }
+        val q = query.lowercase()
+        items.value = allItems.filter {
+            (it.noRetur?.lowercase()?.contains(q) == true) ||
+            (it.namaCabang?.lowercase()?.contains(q) == true)
+        }
+    }
 
     fun load(context: Context) {
         val token = SessionManager(context).bearerToken()
@@ -22,7 +35,10 @@ class ReturListViewModel : ViewModel() {
             errorMessage.value = null
             try {
                 val response = ApiClient.service.getRetur(token)
-                if (response.success) items.value = response.data ?: emptyList()
+                if (response.success) {
+                    allItems = response.data ?: emptyList()
+                    items.value = allItems
+                }
                 else errorMessage.value = "Gagal memuat data retur"
             } catch (e: Exception) {
                 errorMessage.value = "Koneksi gagal: ${e.message}"

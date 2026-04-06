@@ -11,9 +11,21 @@ import kotlinx.coroutines.launch
 
 class KasListViewModel : ViewModel() {
 
+    private var allItems = listOf<KasItem>()
     val items = MutableLiveData<List<KasItem>>(emptyList())
     val isLoading = MutableLiveData(false)
     val errorMessage = MutableLiveData<String?>()
+
+    fun filter(query: String) {
+        if (query.length < 2) {
+            items.value = allItems
+            return
+        }
+        val q = query.lowercase()
+        items.value = allItems.filter {
+            (it.keterangan?.lowercase()?.contains(q) == true)
+        }
+    }
 
     fun load(context: Context) {
         val token = SessionManager(context).bearerToken()
@@ -21,7 +33,10 @@ class KasListViewModel : ViewModel() {
             isLoading.value = true
             try {
                 val response = ApiClient.service.getKas(token)
-                if (response.success) items.value = response.data ?: emptyList()
+                if (response.success) {
+                    allItems = response.data ?: emptyList()
+                    items.value = allItems
+                }
                 else errorMessage.value = response.message ?: "Gagal memuat data kas"
             } catch (e: Exception) {
                 errorMessage.value = "Koneksi gagal: ${e.message}"

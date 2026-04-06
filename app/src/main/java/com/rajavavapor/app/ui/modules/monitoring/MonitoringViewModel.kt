@@ -11,9 +11,21 @@ import kotlinx.coroutines.launch
 
 class MonitoringViewModel : ViewModel() {
 
+    private var allItems = listOf<MonitoringOmzetItem>()
     val items = MutableLiveData<List<MonitoringOmzetItem>>(emptyList())
     val isLoading = MutableLiveData(false)
     val errorMessage = MutableLiveData<String?>()
+
+    fun filter(query: String) {
+        if (query.length < 2) {
+            items.value = allItems
+            return
+        }
+        val q = query.lowercase()
+        items.value = allItems.filter {
+            (it.cabang?.lowercase()?.contains(q) == true)
+        }
+    }
 
     fun load(context: Context) {
         val token = SessionManager(context).bearerToken()
@@ -22,7 +34,10 @@ class MonitoringViewModel : ViewModel() {
             errorMessage.value = null
             try {
                 val response = ApiClient.service.getMonitoringOmzet(token)
-                if (response.success) items.value = response.data ?: emptyList()
+                if (response.success) {
+                    allItems = response.data ?: emptyList()
+                    items.value = allItems
+                }
                 else errorMessage.value = response.message ?: "Gagal memuat data monitoring"
             } catch (e: Exception) {
                 errorMessage.value = "Koneksi gagal: ${e.message}"

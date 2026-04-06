@@ -11,9 +11,22 @@ import kotlinx.coroutines.launch
 
 class CabangListViewModel : ViewModel() {
 
+    private var allItems = listOf<CabangListItem>()
     val items = MutableLiveData<List<CabangListItem>>(emptyList())
     val isLoading = MutableLiveData(false)
     val errorMessage = MutableLiveData<String?>()
+
+    fun filter(query: String) {
+        if (query.length < 2) {
+            items.value = allItems
+            return
+        }
+        val q = query.lowercase()
+        items.value = allItems.filter {
+            (it.nama?.lowercase()?.contains(q) == true) ||
+            (it.kode?.lowercase()?.contains(q) == true)
+        }
+    }
 
     fun load(context: Context) {
         val token = SessionManager(context).bearerToken()
@@ -22,7 +35,10 @@ class CabangListViewModel : ViewModel() {
             errorMessage.value = null
             try {
                 val response = ApiClient.service.getCabang(token)
-                if (response.success) items.value = response.data ?: emptyList()
+                if (response.success) {
+                    allItems = response.data ?: emptyList()
+                    items.value = allItems
+                }
                 else errorMessage.value = response.message ?: "Gagal memuat data cabang"
             } catch (e: Exception) {
                 errorMessage.value = "Koneksi gagal: ${e.message}"

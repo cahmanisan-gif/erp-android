@@ -48,6 +48,14 @@ class CabangListFragment : Fragment() {
             if (msg != null) Snackbar.make(binding.root, msg, Snackbar.LENGTH_LONG).show()
         }
 
+        binding.etSearch.addTextChangedListener(object : android.text.TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: android.text.Editable?) {
+                viewModel.filter(s?.toString()?.trim() ?: "")
+            }
+        })
+
         viewModel.load(requireContext())
     }
 
