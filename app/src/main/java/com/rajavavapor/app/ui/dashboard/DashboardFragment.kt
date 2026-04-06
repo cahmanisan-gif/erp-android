@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.google.android.material.snackbar.Snackbar
+import com.rajavavapor.app.R
 import com.rajavavapor.app.data.OwnerDashboardData
 import com.rajavavapor.app.data.SessionManager
 import com.rajavavapor.app.data.StatsData
