@@ -13,7 +13,10 @@
         android:layout_height="wrap_content"
         android:background="@color/dark_bg"
         android:orientation="vertical"
-        android:padding="@dimen/header_padding">
+        android:paddingTop="24dp"
+        android:paddingBottom="20dp"
+        android:paddingStart="@dimen/header_padding"
+        android:paddingEnd="@dimen/header_padding">
 
         <TextView
             android:layout_width="wrap_content"
@@ -27,10 +30,11 @@
             android:id="@+id/tvStatusText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="6dp"
             android:text="Memuat status..."
             android:textColor="#AAAAAA"
-            android:textSize="@dimen/text_small" />
+            android:textSize="@dimen/text_small"
+            android:lineSpacingExtra="4dp" />
     </LinearLayout>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -54,8 +58,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="2dp">
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="4dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="#10000000">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -112,6 +118,8 @@
                                 android:text="Ambil Foto"
                                 android:textColor="@color/brand_red"
                                 app:strokeColor="@color/brand_red"
+                                app:strokeWidth="2dp"
+                                app:cornerRadius="12dp"
                                 app:icon="@android:drawable/ic_menu_camera"
                                 app:iconTint="@color/brand_red" />
 
@@ -125,6 +133,8 @@
                                 android:text="Scan Barcode"
                                 android:textColor="@color/brand_red"
                                 app:strokeColor="@color/brand_red"
+                                app:strokeWidth="2dp"
+                                app:cornerRadius="12dp"
                                 app:icon="@android:drawable/ic_menu_search"
                                 app:iconTint="@color/brand_red" />
                         </LinearLayout>
@@ -138,7 +148,7 @@
                             android:textSize="16sp"
                             android:textStyle="bold"
                             app:backgroundTint="@color/brand_red"
-                            app:cornerRadius="12dp" />
+                            app:cornerRadius="16dp" />
 
                         <!-- Clock Out Button -->
                         <com.google.android.material.button.MaterialButton
@@ -150,7 +160,7 @@
                             android:textStyle="bold"
                             android:visibility="gone"
                             app:backgroundTint="@color/dark_bg"
-                            app:cornerRadius="12dp" />
+                            app:cornerRadius="16dp" />
 
                         <!-- Submit Progress -->
                         <ProgressBar
@@ -170,8 +180,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="2dp">
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="4dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="#10000000">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -183,10 +195,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Riwayat Bulan Ini"
-                            android:textSize="15sp"
+                            android:textSize="16sp"
                             android:textStyle="bold"
                             android:textColor="@color/dark_bg"
-                            android:layout_marginBottom="8dp" />
+                            android:layout_marginBottom="12dp" />
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/recyclerViewRiwayat"

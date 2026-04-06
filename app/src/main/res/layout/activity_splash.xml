@@ -20,8 +20,8 @@
         android:textColor="#FFFFFF"
         android:textSize="@dimen/text_header"
         android:fontFamily="sans-serif-medium"
-        android:letterSpacing="0.15"
-        android:layout_marginTop="20dp" />
+        android:letterSpacing="0.2"
+        android:layout_marginTop="24dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -29,12 +29,13 @@
         android:text="PORTAL"
         android:textColor="#868E96"
         android:textSize="@dimen/text_subtitle"
-        android:layout_marginTop="4dp" />
+        android:letterSpacing="0.3"
+        android:layout_marginTop="8dp" />
 
     <ProgressBar
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="48dp"
         android:indeterminateTint="#C1121F" />
 
 </LinearLayout>

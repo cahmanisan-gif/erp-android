@@ -15,7 +15,7 @@
         android:textSize="32sp"
         android:textStyle="bold"
         android:textColor="@color/brand_red"
-        android:letterSpacing="0.1"
+        android:letterSpacing="0.2"
         app:layout_constraintBottom_toTopOf="@+id/tvSubtitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +30,8 @@
         android:text="PORTAL"
         android:textSize="14sp"
         android:textColor="#AAAAAA"
-        android:layout_marginTop="4dp"
+        android:letterSpacing="0.15"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toTopOf="@+id/cardLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,8 +46,10 @@
         android:layout_marginEnd="24dp"
         android:layout_marginTop="32dp"
         app:cardBackgroundColor="#2C2C2C"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="8dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="12dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="#10000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,16 +59,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="24dp">
+            android:padding="28dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Masuk ke Akun"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="@color/white"
-                android:layout_marginBottom="20dp" />
+                android:layout_marginBottom="24dp" />
 
             <!-- Username -->
             <com.google.android.material.textfield.TextInputLayout
@@ -92,7 +95,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="16dp"
                 android:hint="Password"
                 app:boxStrokeColor="@color/brand_red"
                 app:hintTextColor="@color/brand_red"
@@ -123,12 +126,12 @@
                 android:id="@+id/btnLogin"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="20dp"
                 android:text="MASUK"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:backgroundTint="@color/brand_red"
-                app:cornerRadius="12dp" />
+                app:cornerRadius="16dp" />
 
             <!-- Divider -->
             <LinearLayout
@@ -165,13 +168,14 @@
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="16dp"
                 android:text="LOGIN DENGAN WAJAH"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/brand_red"
                 app:strokeColor="@color/brand_red"
-                app:cornerRadius="12dp"
+                app:strokeWidth="2dp"
+                app:cornerRadius="16dp"
                 app:icon="@android:drawable/ic_menu_camera"
                 app:iconTint="@color/brand_red"
                 app:iconGravity="textStart" />
