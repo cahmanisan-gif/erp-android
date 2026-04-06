@@ -17,9 +17,9 @@
         android:title="Absensi" />
 
     <item
-        android:id="@+id/navigation_member"
-        android:icon="@drawable/ic_nav_member"
-        android:title="Member" />
+        android:id="@+id/navigation_menu"
+        android:icon="@drawable/ic_nav_menu"
+        android:title="Menu" />
 
     <item
         android:id="@+id/navigation_profil"

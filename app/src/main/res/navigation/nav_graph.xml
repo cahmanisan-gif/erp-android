@@ -4,33 +4,12 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/navigation_dashboard">
 
-    <!-- Default animations for all transitions -->
+    <!-- ═══ Bottom Nav Tabs ═══ -->
+
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.rajavavapor.app.ui.dashboard.DashboardFragment"
-        android:label="Dashboard">
-        <action
-            android:id="@+id/action_dashboard_to_notifikasi"
-            app:destination="@id/navigation_notifikasi"
-            app:enterAnim="@anim/nav_fade_in"
-            app:exitAnim="@anim/nav_fade_out"
-            app:popEnterAnim="@anim/nav_fade_in"
-            app:popExitAnim="@anim/nav_fade_out" />
-        <action
-            android:id="@+id/action_dashboard_to_absensi"
-            app:destination="@id/navigation_absensi"
-            app:enterAnim="@anim/nav_fade_in"
-            app:exitAnim="@anim/nav_fade_out"
-            app:popEnterAnim="@anim/nav_fade_in"
-            app:popExitAnim="@anim/nav_fade_out" />
-        <action
-            android:id="@+id/action_dashboard_to_member"
-            app:destination="@id/navigation_member"
-            app:enterAnim="@anim/nav_fade_in"
-            app:exitAnim="@anim/nav_fade_out"
-            app:popEnterAnim="@anim/nav_fade_in"
-            app:popExitAnim="@anim/nav_fade_out" />
-    </fragment>
+        android:label="Dashboard" />
 
     <fragment
         android:id="@+id/navigation_notifikasi"
@@ -43,13 +22,100 @@
         android:label="Absensi" />
 
     <fragment
-        android:id="@+id/navigation_member"
-        android:name="com.rajavavapor.app.ui.member.MemberFragment"
-        android:label="Member" />
+        android:id="@+id/navigation_menu"
+        android:name="com.rajavavapor.app.ui.menu.MenuFragment"
+        android:label="Menu" />
 
     <fragment
         android:id="@+id/navigation_profil"
         android:name="com.rajavavapor.app.ui.profil.ProfilFragment"
         android:label="Profil" />
+
+    <!-- ═══ Module Destinations (accessible from Menu grid) ═══ -->
+
+    <fragment
+        android:id="@+id/navigation_member"
+        android:name="com.rajavavapor.app.ui.member.MemberFragment"
+        android:label="Member" />
+
+    <fragment
+        android:id="@+id/navigation_pos"
+        android:name="com.rajavavapor.app.ui.modules.PosFragment"
+        android:label="POS" />
+
+    <fragment
+        android:id="@+id/navigation_invoice"
+        android:name="com.rajavavapor.app.ui.modules.InvoiceFragment"
+        android:label="Invoice" />
+
+    <fragment
+        android:id="@+id/navigation_customer"
+        android:name="com.rajavavapor.app.ui.modules.CustomerFragment"
+        android:label="Customer" />
+
+    <fragment
+        android:id="@+id/navigation_produk"
+        android:name="com.rajavavapor.app.ui.modules.ProdukFragment"
+        android:label="Produk" />
+
+    <fragment
+        android:id="@+id/navigation_retur"
+        android:name="com.rajavavapor.app.ui.modules.ReturFragment"
+        android:label="Retur" />
+
+    <fragment
+        android:id="@+id/navigation_request"
+        android:name="com.rajavavapor.app.ui.modules.RequestFragment"
+        android:label="Request Produk" />
+
+    <fragment
+        android:id="@+id/navigation_kas"
+        android:name="com.rajavavapor.app.ui.modules.KasFragment"
+        android:label="Kas" />
+
+    <fragment
+        android:id="@+id/navigation_piutang"
+        android:name="com.rajavavapor.app.ui.modules.PiutangFragment"
+        android:label="Piutang" />
+
+    <fragment
+        android:id="@+id/navigation_pembelian"
+        android:name="com.rajavavapor.app.ui.modules.PembelianFragment"
+        android:label="Pembelian" />
+
+    <fragment
+        android:id="@+id/navigation_payroll"
+        android:name="com.rajavavapor.app.ui.modules.PayrollFragment"
+        android:label="Payroll" />
+
+    <fragment
+        android:id="@+id/navigation_izin"
+        android:name="com.rajavavapor.app.ui.modules.IzinFragment"
+        android:label="Izin" />
+
+    <fragment
+        android:id="@+id/navigation_monitoring"
+        android:name="com.rajavavapor.app.ui.modules.MonitoringFragment"
+        android:label="Monitoring" />
+
+    <fragment
+        android:id="@+id/navigation_laporan"
+        android:name="com.rajavavapor.app.ui.modules.LaporanFragment"
+        android:label="Laporan" />
+
+    <fragment
+        android:id="@+id/navigation_cabang"
+        android:name="com.rajavavapor.app.ui.modules.CabangFragment"
+        android:label="Cabang" />
+
+    <fragment
+        android:id="@+id/navigation_users"
+        android:name="com.rajavavapor.app.ui.modules.UsersFragment"
+        android:label="Users" />
+
+    <fragment
+        android:id="@+id/navigation_promo"
+        android:name="com.rajavavapor.app.ui.modules.PromoFragment"
+        android:label="Promo" />
 
 </navigation>
