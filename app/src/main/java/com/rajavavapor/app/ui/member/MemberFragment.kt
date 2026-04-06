@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.rajavavapor.app.databinding.FragmentMemberBinding
+import com.rajavavapor.app.ui.member.MemberDetailSheet
 import com.rajavavapor.app.util.ScreenHelper
 
 class MemberFragment : Fragment() {
@@ -28,7 +29,10 @@ class MemberFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adapter = MemberAdapter()
+        adapter = MemberAdapter { member ->
+            MemberDetailSheet().setItem(member)
+                .show(childFragmentManager, "member_detail")
+        }
         binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), ScreenHelper.getGridColumns(requireContext()))
         binding.recyclerView.adapter = adapter
 

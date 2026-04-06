@@ -15,6 +15,9 @@ import com.rajavavapor.app.R
 import com.rajavavapor.app.data.SessionManager
 import com.rajavavapor.app.databinding.ActivityMainBinding
 import com.rajavavapor.app.ui.login.LoginActivity
+import androidx.lifecycle.lifecycleScope
+import com.rajavavapor.app.api.ApiClient
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -40,6 +43,9 @@ class MainActivity : AppCompatActivity() {
         navRail?.setupWithNavController(navController)
             ?: bottomNav?.setupWithNavController(navController)
 
+        // Fetch unread notification badge
+        fetchNotificationBadge(bottomNav, navRail)
+
         // Handle system bar insets
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { _, insets ->
             val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -50,6 +56,30 @@ class MainActivity : AppCompatActivity() {
             // Tablet rail gets top + left padding
             navRail?.updatePadding(top = bars.top, left = bars.left)
             insets
+        }
+    }
+
+    private fun fetchNotificationBadge(
+        bottomNav: BottomNavigationView?,
+        navRail: NavigationRailView?
+    ) {
+        lifecycleScope.launch {
+            try {
+                val token = session.bearerToken()
+                val response = ApiClient.service.getUnreadCount(token)
+                if (response.success && response.count > 0) {
+                    val badge = bottomNav?.getOrCreateBadge(R.id.navigation_notifikasi)
+                        ?: navRail?.getOrCreateBadge(R.id.navigation_notifikasi)
+                    badge?.apply {
+                        isVisible = true
+                        number = response.count
+                        backgroundColor = getColor(R.color.brand_red)
+                    }
+                } else {
+                    bottomNav?.removeBadge(R.id.navigation_notifikasi)
+                    navRail?.removeBadge(R.id.navigation_notifikasi)
+                }
+            } catch (_: Exception) { }
         }
     }
 

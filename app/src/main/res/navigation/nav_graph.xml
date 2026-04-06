@@ -4,10 +4,33 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/navigation_dashboard">
 
+    <!-- Default animations for all transitions -->
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.rajavavapor.app.ui.dashboard.DashboardFragment"
-        android:label="Dashboard" />
+        android:label="Dashboard">
+        <action
+            android:id="@+id/action_dashboard_to_notifikasi"
+            app:destination="@id/navigation_notifikasi"
+            app:enterAnim="@anim/nav_fade_in"
+            app:exitAnim="@anim/nav_fade_out"
+            app:popEnterAnim="@anim/nav_fade_in"
+            app:popExitAnim="@anim/nav_fade_out" />
+        <action
+            android:id="@+id/action_dashboard_to_absensi"
+            app:destination="@id/navigation_absensi"
+            app:enterAnim="@anim/nav_fade_in"
+            app:exitAnim="@anim/nav_fade_out"
+            app:popEnterAnim="@anim/nav_fade_in"
+            app:popExitAnim="@anim/nav_fade_out" />
+        <action
+            android:id="@+id/action_dashboard_to_member"
+            app:destination="@id/navigation_member"
+            app:enterAnim="@anim/nav_fade_in"
+            app:exitAnim="@anim/nav_fade_out"
+            app:popEnterAnim="@anim/nav_fade_in"
+            app:popExitAnim="@anim/nav_fade_out" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_notifikasi"

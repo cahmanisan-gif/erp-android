@@ -11,6 +11,7 @@ import com.rajavavapor.app.data.OwnerDashboardData
 import com.rajavavapor.app.data.SessionManager
 import com.rajavavapor.app.data.StatsData
 import com.rajavavapor.app.databinding.FragmentDashboardBinding
+import androidx.navigation.fragment.findNavController
 import java.text.NumberFormat
 import java.util.Locale
 
@@ -56,6 +57,32 @@ class DashboardFragment : Fragment() {
         }
 
         viewModel.load(requireContext())
+
+        // Clickable dashboard cards
+        setupDashboardClicks()
+    }
+
+    private fun setupDashboardClicks() {
+        // Request Pending → Notifikasi tab
+        binding.tvStatRequest?.setOnClickListener {
+            findNavController().navigate(R.id.navigation_notifikasi)
+        }
+        // Retur Pending → Notifikasi tab
+        binding.tvReturPending?.setOnClickListener {
+            findNavController().navigate(R.id.navigation_notifikasi)
+        }
+        // Staff Hadir → Absensi tab
+        binding.tvStaffHadir?.setOnClickListener {
+            findNavController().navigate(R.id.navigation_absensi)
+        }
+        // Invoice → Member tab
+        binding.tvStatInvoice?.setOnClickListener {
+            findNavController().navigate(R.id.navigation_member)
+        }
+        // Customer → Member tab
+        binding.tvStatCustomer?.setOnClickListener {
+            findNavController().navigate(R.id.navigation_member)
+        }
     }
 
     private fun showOwnerDashboard(data: OwnerDashboardData) {

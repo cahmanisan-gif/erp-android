@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@color/white">
+
+    <!-- Drag handle -->
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/circle_red"
+        android:backgroundTint="#DDDDDD" />
+
+    <!-- Type badge -->
+    <TextView
+        android:id="@+id/tvSheetTipe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/brand_light"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="4dp"
+        android:textColor="@color/brand_red"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/tvSheetJudul"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:textColor="@color/dark_bg"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <!-- Time -->
+    <TextView
+        android:id="@+id/tvSheetWaktu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textColor="#888"
+        android:textSize="13sp" />
+
+    <!-- Divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginVertical="16dp"
+        android:background="#F0F0F0" />
+
+    <!-- Full message -->
+    <TextView
+        android:id="@+id/tvSheetPesan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#555"
+        android:textSize="15sp"
+        android:lineSpacingExtra="4dp" />
+
+    <!-- Action button (if link available) -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSheetAction"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:text="Lihat Detail"
+        android:textSize="14sp"
+        android:visibility="gone"
+        app:backgroundTint="@color/brand_red"
+        app:cornerRadius="12dp" />
+
+</LinearLayout>

@@ -30,6 +30,9 @@ class NotifikasiFragment : Fragment() {
             if (item.dibaca == 0) {
                 viewModel.bacaNotifikasi(requireContext(), item.id)
             }
+            // Show detail bottom sheet
+            NotifikasiDetailSheet().setItem(item)
+                .show(childFragmentManager, "notifikasi_detail")
         }
 
         binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), ScreenHelper.getGridColumns(requireContext()))

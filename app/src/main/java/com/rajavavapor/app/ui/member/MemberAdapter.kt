@@ -12,9 +12,11 @@ import com.rajavavapor.app.data.MemberItem
 import java.text.NumberFormat
 import java.util.Locale
 
-class MemberAdapter : ListAdapter<MemberItem, MemberAdapter.ViewHolder>(DIFF) {
+class MemberAdapter(
+    private val onClick: (MemberItem) -> Unit
+) : ListAdapter<MemberItem, MemberAdapter.ViewHolder>(DIFF) {
 
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class ViewHolder(view: View, private val onClick: (MemberItem) -> Unit) : RecyclerView.ViewHolder(view) {
         val tvNama: TextView = view.findViewById(R.id.tvNama)
         val tvHp: TextView = view.findViewById(R.id.tvHp)
         val tvTier: TextView = view.findViewById(R.id.tvTier)
@@ -25,7 +27,7 @@ class MemberAdapter : ListAdapter<MemberItem, MemberAdapter.ViewHolder>(DIFF) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_member, parent, false)
-        return ViewHolder(view)
+        return ViewHolder(view, onClick)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -37,6 +39,7 @@ class MemberAdapter : ListAdapter<MemberItem, MemberAdapter.ViewHolder>(DIFF) {
         holder.tvPoin.text = "${item.totalPoin ?: 0} poin"
         holder.tvBelanja.text = (item.totalBelanja?.toDouble() ?: 0.0).toRupiah()
         holder.tvTransaksi.text = "${item.totalTransaksi ?: 0}x transaksi"
+        holder.itemView.setOnClickListener { onClick(item) }
     }
 
     private fun Double.toRupiah(): String {
