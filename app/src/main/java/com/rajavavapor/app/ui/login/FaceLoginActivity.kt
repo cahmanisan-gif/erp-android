@@ -192,9 +192,8 @@ class FaceLoginActivity : AppCompatActivity() {
         future.addListener({
             val provider = future.get()
 
-            val preview = Preview.Builder().build().also {
-                it.surfaceProvider = binding.previewViewFace.surfaceProvider
-            }
+            val preview = Preview.Builder().build()
+            preview.setSurfaceProvider(binding.previewViewFace.surfaceProvider)
 
             imageCapture = ImageCapture.Builder()
                 .setCaptureMode(ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY)
