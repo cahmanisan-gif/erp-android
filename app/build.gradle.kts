@@ -95,4 +95,8 @@ dependencies {
 
     // Activity Result API
     implementation("androidx.activity:activity-ktx:1.8.2")
+
+    // Firebase Cloud Messaging (Push Notification)
+    implementation(platform("com.google.firebase:firebase-bom:32.7.2"))
+    implementation("com.google.firebase:firebase-messaging-ktx")
 }
