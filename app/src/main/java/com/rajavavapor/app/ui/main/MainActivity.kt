@@ -2,7 +2,11 @@ package com.rajavavapor.app.ui.main
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -18,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var session: SessionManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -34,6 +39,18 @@ class MainActivity : AppCompatActivity() {
 
         navRail?.setupWithNavController(navController)
             ?: bottomNav?.setupWithNavController(navController)
+
+        // Handle system bar insets
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { _, insets ->
+            val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            // Fragment container gets top padding (status bar)
+            binding.navHostFragment.updatePadding(top = bars.top)
+            // Bottom nav gets bottom padding (navigation bar)
+            bottomNav?.updatePadding(bottom = bars.bottom)
+            // Tablet rail gets top + left padding
+            navRail?.updatePadding(top = bars.top, left = bars.left)
+            insets
+        }
     }
 
     fun logout() {

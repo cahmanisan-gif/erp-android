@@ -3,8 +3,12 @@ package com.rajavavapor.app.ui.login
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import com.google.android.material.snackbar.Snackbar
 import com.rajavavapor.app.data.SessionManager
 import com.rajavavapor.app.databinding.ActivityLoginBinding
@@ -16,9 +20,16 @@ class LoginActivity : AppCompatActivity() {
     private val viewModel: LoginViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, insets ->
+            val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            view.updatePadding(top = bars.top, bottom = bars.bottom, left = bars.left, right = bars.right)
+            insets
+        }
 
         binding.btnLogin.setOnClickListener {
             val username = binding.etUsername.text?.toString()?.trim() ?: ""

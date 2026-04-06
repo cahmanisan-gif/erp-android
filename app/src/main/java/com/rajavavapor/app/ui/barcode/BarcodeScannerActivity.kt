@@ -3,7 +3,11 @@ package com.rajavavapor.app.ui.barcode
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy
@@ -20,9 +24,17 @@ class BarcodeScannerActivity : AppCompatActivity() {
     private var hasScanned = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         binding = ActivityBarcodeScannerBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // Only pad bottom for cancel button, camera stays full screen
+        ViewCompat.setOnApplyWindowInsetsListener(binding.btnCancel) { view, insets ->
+            val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            view.updatePadding(bottom = bars.bottom)
+            insets
+        }
 
         binding.btnCancel.setOnClickListener { onCancelClick(it) }
         startCamera()
