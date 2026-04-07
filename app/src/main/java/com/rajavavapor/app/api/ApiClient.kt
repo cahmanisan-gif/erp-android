@@ -11,25 +11,13 @@ object ApiClient {
 
     private const val BASE_URL = "https://poinraja.com/"
 
+    @Volatile
     private var _service: ApiService? = null
 
-    /**
-     * Initialize with context for auth interceptor (call in Application or MainActivity).
-     */
     fun init(context: Context) {
         if (_service != null) return
 
-        val loggingInterceptor = HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BASIC
-        }
-
-        val client = OkHttpClient.Builder()
-            .connectTimeout(10, TimeUnit.SECONDS)
-            .readTimeout(10, TimeUnit.SECONDS)
-            .writeTimeout(10, TimeUnit.SECONDS)
-            .addInterceptor(loggingInterceptor)
-            .addInterceptor(AuthInterceptor(context.applicationContext))
-            .build()
+        val client = buildClient(AuthInterceptor(context.applicationContext))
 
         _service = Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -39,29 +27,30 @@ object ApiClient {
             .create(ApiService::class.java)
     }
 
-    /**
-     * Lazy service — falls back to non-intercepted client if init() not called yet.
-     */
     val service: ApiService
-        get() = _service ?: createDefaultService()
-
-    private fun createDefaultService(): ApiService {
-        val loggingInterceptor = HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BASIC
+        get() = _service ?: synchronized(this) {
+            _service ?: createFallbackService().also { _service = it }
         }
 
-        val client = OkHttpClient.Builder()
-            .connectTimeout(10, TimeUnit.SECONDS)
-            .readTimeout(10, TimeUnit.SECONDS)
-            .writeTimeout(10, TimeUnit.SECONDS)
-            .addInterceptor(loggingInterceptor)
-            .build()
-
+    private fun createFallbackService(): ApiService {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .client(client)
+            .client(buildClient(null))
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiService::class.java)
+    }
+
+    private fun buildClient(authInterceptor: AuthInterceptor?): OkHttpClient {
+        val builder = OkHttpClient.Builder()
+            .connectTimeout(15, TimeUnit.SECONDS)
+            .readTimeout(15, TimeUnit.SECONDS)
+            .writeTimeout(15, TimeUnit.SECONDS)
+            .addInterceptor(HttpLoggingInterceptor().apply {
+                level = HttpLoggingInterceptor.Level.BASIC
+            })
+
+        authInterceptor?.let { builder.addInterceptor(it) }
+        return builder.build()
     }
 }
