@@ -22,40 +22,34 @@ class LeaderboardViewModel : ViewModel() {
             try {
                 val response = ApiClient.service.getLeaderboard(token, type, periode)
                 if (response.success) {
-                    items.value = (response.data ?: emptyList())
-                        .sortedByDescending { it.omzet }
+                    // Try data, then top_kasir/top_toko from leaderboard-retail response
+                    val list = response.data
+                        ?: (if (type == "kasir") response.topKasir else response.topToko)
+                    items.value = (list ?: emptyList()).sortedByDescending { it.omzet }
                 }
             } catch (e: Exception) {
-                // Fallback: use dashboard/owner top_kasir or top_cabang
+                // Fallback: dashboard/owner
                 try {
                     val dashboard = ApiClient.service.getDashboardOwner(token)
                     if (dashboard.success && dashboard.data != null) {
                         val list = if (type == "kasir") {
                             dashboard.data.topKasir?.map { k ->
                                 LeaderboardItem(
-                                    id = null,
-                                    nama = k.namaLengkap,
-                                    namaCabang = k.namaCabang,
-                                    kodeCabang = null,
-                                    subtitle = k.namaCabang,
-                                    omzet = k.omzet,
-                                    trx = k.trx
+                                    id = null, nama = k.namaLengkap, namaLengkap = k.namaLengkap,
+                                    namaCabang = k.namaCabang, kodeCabang = null, kode = null,
+                                    subtitle = k.namaCabang, omzet = k.omzet, trx = k.trx
                                 )
                             }
                         } else {
                             dashboard.data.topCabang?.map { c ->
                                 LeaderboardItem(
-                                    id = null,
-                                    nama = c.nama,
-                                    namaCabang = c.nama,
-                                    kodeCabang = c.kode,
-                                    subtitle = c.kode,
-                                    omzet = c.omzet,
-                                    trx = c.trx
+                                    id = null, nama = c.nama, namaLengkap = null,
+                                    namaCabang = c.nama, kodeCabang = c.kode, kode = c.kode,
+                                    subtitle = c.kode, omzet = c.omzet, trx = c.trx
                                 )
                             }
                         }
-                        items.value = list ?: emptyList()
+                        items.value = (list ?: emptyList()).sortedByDescending { it.omzet }
                     }
                 } catch (_: Exception) {
                     errorMessage.value = "Gagal memuat leaderboard"

@@ -18,7 +18,6 @@ import com.rajavavapor.app.data.SessionManager
 import com.rajavavapor.app.data.StatsData
 import com.rajavavapor.app.data.TrendHari
 import com.rajavavapor.app.databinding.FragmentDashboardBinding
-import android.os.Bundle
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.rajavavapor.app.util.AnimationHelper
