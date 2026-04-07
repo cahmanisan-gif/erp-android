@@ -132,10 +132,12 @@ class DashboardFragment : Fragment() {
         val growth = data.growthVsKemarin
         if (growth != null) {
             val sign = if (growth >= 0) "▲" else "▼"
-            val color = if (growth >= 0) requireContext().getColor(com.rajavavapor.app.R.color.success_green)
-                        else requireContext().getColor(com.rajavavapor.app.R.color.brand_red)
+            val bgColor = if (growth >= 0) "#E8F5E9" else "#FDECEA"
+            val textColor = if (growth >= 0) requireContext().getColor(R.color.success_green)
+                        else requireContext().getColor(R.color.brand_red)
             binding.tvGrowth.text = "$sign $growth% vs kemarin"
-            binding.tvGrowth.setTextColor(color)
+            binding.tvGrowth.setTextColor(textColor)
+            binding.tvGrowth.setBackgroundColor(Color.parseColor(bgColor))
             binding.tvGrowth.visibility = View.VISIBLE
         } else {
             binding.tvGrowth.visibility = View.GONE

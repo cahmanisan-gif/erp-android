@@ -17,26 +17,35 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- ═══ Header — dark premium ═══ -->
+            <!-- ═══ Header — white with logo ═══ -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/dark_bg"
+                android:background="#FFFFFF"
                 android:orientation="vertical"
                 android:paddingHorizontal="20dp"
-                android:paddingTop="16dp"
-                android:paddingBottom="28dp">
+                android:paddingTop="12dp"
+                android:paddingBottom="20dp"
+                android:elevation="2dp">
 
+                <!-- Logo + greeting row -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:gravity="center_vertical">
 
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/logo_rajavapor"
+                        android:scaleType="fitCenter" />
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:layout_marginStart="12dp"
                         android:orientation="vertical">
 
                         <TextView
@@ -44,8 +53,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Halo!"
-                            android:textColor="@color/white"
-                            android:textSize="22sp"
+                            android:textColor="#111111"
+                            android:textSize="18sp"
                             android:textStyle="bold"
                             android:fontFamily="sans-serif-medium" />
 
@@ -53,9 +62,9 @@
                             android:id="@+id/tvCabang"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:textColor="#90FFFFFF"
-                            android:textSize="13sp" />
+                            android:layout_marginTop="1dp"
+                            android:textColor="#888888"
+                            android:textSize="12sp" />
                     </LinearLayout>
 
                     <TextView
@@ -71,20 +80,20 @@
                         android:textStyle="bold" />
                 </LinearLayout>
 
-                <!-- Hero Omzet — inside header like banking app -->
+                <!-- Hero Omzet — white background -->
                 <LinearLayout
                     android:id="@+id/layoutOwnerHeader"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="16dp"
                     android:visibility="gone">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Omzet Hari Ini"
-                        android:textColor="#80FFFFFF"
+                        android:textColor="#888888"
                         android:textSize="13sp" />
 
                     <LinearLayout
@@ -92,7 +101,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="bottom"
-                        android:layout_marginTop="6dp">
+                        android:layout_marginTop="4dp">
 
                         <TextView
                             android:id="@+id/tvOmzetHariIni"
@@ -100,8 +109,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Rp 0"
-                            android:textColor="@color/white"
-                            android:textSize="32sp"
+                            android:textColor="#111111"
+                            android:textSize="30sp"
                             android:textStyle="bold"
                             android:fontFamily="sans-serif-medium" />
 
@@ -109,7 +118,6 @@
                             android:id="@+id/tvGrowth"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="#30FFFFFF"
                             android:paddingHorizontal="10dp"
                             android:paddingVertical="4dp"
                             android:textSize="12sp"
@@ -123,7 +131,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0 transaksi"
-                        android:textColor="#60FFFFFF"
+                        android:textColor="#AAAAAA"
                         android:textSize="13sp"
                         android:layout_marginTop="2dp" />
                 </LinearLayout>
