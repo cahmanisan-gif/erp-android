@@ -389,7 +389,7 @@ data class PromoItem(
     @SerializedName("is_aktif") val isAktif: Boolean?
 )
 
-// ── Omzet Per Cabang ──────────────────────────────────────────────────────────
+// ── Omzet Per Cabang (dari api/monitoring/omzet & api/dashboard/owner) ────────
 
 data class OmzetCabangResponse(
     val success: Boolean,
@@ -398,10 +398,20 @@ data class OmzetCabangResponse(
 
 data class OmzetCabangItem(
     @SerializedName("cabang_id") val cabangId: Int?,
+    val kode: String?,
+    val nama: String?,
     @SerializedName("nama_cabang") val namaCabang: String?,
+    @SerializedName("pos_total") val posTotal: Double?,
+    @SerializedName("pos_cash") val posCash: Double?,
+    @SerializedName("pos_transfer") val posTransfer: Double?,
     val omzet: Double?,
+    val trx: Int?,
     @SerializedName("total_trx") val totalTrx: Int?
-)
+) {
+    fun getDisplayName(): String = namaCabang ?: nama ?: kode ?: "Cabang"
+    fun getDisplayOmzet(): Double = posTotal ?: omzet ?: 0.0
+    fun getDisplayTrx(): Int = totalTrx ?: trx ?: 0
+}
 
 // ── Generic ───────────────────────────────────────────────────────────────────
 

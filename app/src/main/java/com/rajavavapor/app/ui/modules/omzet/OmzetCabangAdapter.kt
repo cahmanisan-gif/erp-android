@@ -25,15 +25,15 @@ class OmzetCabangAdapter :
         val fmt = NumberFormat.getInstance(Locale("id", "ID")).apply { maximumFractionDigits = 0 }
 
         holder.binding.tvRank.text = "${position + 1}"
-        holder.binding.tvNamaCabang.text = item.namaCabang ?: "Cabang"
-        holder.binding.tvTrxCabang.text = "${item.totalTrx ?: 0} transaksi"
-        holder.binding.tvOmzetCabang.text = "Rp ${fmt.format(item.omzet ?: 0.0)}"
+        holder.binding.tvNamaCabang.text = item.getDisplayName()
+        holder.binding.tvTrxCabang.text = "${item.getDisplayTrx()} transaksi"
+        holder.binding.tvOmzetCabang.text = "Rp ${fmt.format(item.getDisplayOmzet())}"
     }
 
     companion object {
         private val DIFF = object : DiffUtil.ItemCallback<OmzetCabangItem>() {
             override fun areItemsTheSame(old: OmzetCabangItem, new: OmzetCabangItem) =
-                old.cabangId == new.cabangId
+                (old.cabangId ?: old.kode) == (new.cabangId ?: new.kode)
             override fun areContentsTheSame(old: OmzetCabangItem, new: OmzetCabangItem) =
                 old == new
         }

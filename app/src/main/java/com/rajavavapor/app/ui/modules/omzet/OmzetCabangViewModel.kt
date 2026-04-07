@@ -15,19 +15,43 @@ class OmzetCabangViewModel : ViewModel() {
     val isLoading = MutableLiveData(false)
     val errorMessage = MutableLiveData<String?>()
 
-    fun load(context: Context) {
+    fun load(context: Context, periode: String = "bulan-ini") {
         val token = SessionManager(context).bearerToken()
         viewModelScope.launch {
             isLoading.value = true
             try {
-                val response = ApiClient.service.getOmzetCabang(token)
+                // Try monitoring/omzet first (detailed per cabang)
+                val response = ApiClient.service.getMonitoringOmzetDetail(token, periode)
                 if (response.success) {
-                    // Sort by omzet descending
-                    val sorted = (response.data ?: emptyList()).sortedByDescending { it.omzet }
+                    val sorted = (response.data ?: emptyList())
+                        .sortedByDescending { it.getDisplayOmzet() }
                     items.value = sorted
                 }
             } catch (e: Exception) {
-                errorMessage.value = "Gagal memuat data omzet cabang"
+                // Fallback: use top_cabang from dashboard/owner
+                try {
+                    val dashboard = ApiClient.service.getDashboardOwner(token)
+                    if (dashboard.success && dashboard.data != null) {
+                        val topCabang = dashboard.data.topCabang ?: emptyList()
+                        val converted = topCabang.map { tc ->
+                            OmzetCabangItem(
+                                cabangId = null,
+                                kode = tc.kode,
+                                nama = tc.nama,
+                                namaCabang = tc.nama,
+                                posTotal = tc.omzet,
+                                posCash = null,
+                                posTransfer = null,
+                                omzet = tc.omzet,
+                                trx = tc.trx,
+                                totalTrx = tc.trx
+                            )
+                        }
+                        items.value = converted
+                    }
+                } catch (_: Exception) {
+                    errorMessage.value = "Gagal memuat data omzet cabang"
+                }
             } finally {
                 isLoading.value = false
             }
