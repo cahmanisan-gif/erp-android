@@ -110,6 +110,11 @@ class DashboardFragment : Fragment() {
         binding.tvStatCabang?.setOnClickListener {
             findNavController().navigate(R.id.navigation_cabang)
         }
+
+        // ── Owner: Omzet Bulan → Omzet Per Cabang ──
+        binding.tvOmzetBulan?.setOnClickListener {
+            findNavController().navigate(R.id.navigation_omzet_cabang)
+        }
     }
 
     private fun showOwnerDashboard(data: OwnerDashboardData) {

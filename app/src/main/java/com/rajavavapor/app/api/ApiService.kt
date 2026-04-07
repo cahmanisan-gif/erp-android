@@ -206,4 +206,13 @@ interface ApiService {
     suspend fun getPromo(
         @Header("Authorization") token: String
     ): PromoResponse
+
+    // ── Omzet Per Cabang ─────────────────────────────────────────────────
+
+    @GET("api/dashboard/omzet-cabang")
+    suspend fun getOmzetCabang(
+        @Header("Authorization") token: String,
+        @Query("bulan") bulan: Int? = null,
+        @Query("tahun") tahun: Int? = null
+    ): OmzetCabangResponse
 }

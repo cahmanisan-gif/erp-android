@@ -389,6 +389,20 @@ data class PromoItem(
     @SerializedName("is_aktif") val isAktif: Boolean?
 )
 
+// ── Omzet Per Cabang ──────────────────────────────────────────────────────────
+
+data class OmzetCabangResponse(
+    val success: Boolean,
+    val data: List<OmzetCabangItem>?
+)
+
+data class OmzetCabangItem(
+    @SerializedName("cabang_id") val cabangId: Int?,
+    @SerializedName("nama_cabang") val namaCabang: String?,
+    val omzet: Double?,
+    @SerializedName("total_trx") val totalTrx: Int?
+)
+
 // ── Generic ───────────────────────────────────────────────────────────────────
 
 data class SimpleResponse(val success: Boolean, val message: String?)

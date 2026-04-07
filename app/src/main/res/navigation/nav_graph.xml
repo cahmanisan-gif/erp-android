@@ -118,4 +118,9 @@
         android:name="com.rajavavapor.app.ui.modules.promo.PromoFragment"
         android:label="Promo" />
 
+    <fragment
+        android:id="@+id/navigation_omzet_cabang"
+        android:name="com.rajavavapor.app.ui.modules.omzet.OmzetCabangFragment"
+        android:label="Omzet Cabang" />
+
 </navigation>
