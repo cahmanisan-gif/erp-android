@@ -71,51 +71,21 @@ class DashboardFragment : Fragment() {
         setupDashboardClicks()
     }
 
+    private fun safeNavigate(destId: Int, args: Bundle? = null) {
+        try { findNavController().navigate(destId, args) } catch (_: Exception) {}
+    }
+
     private fun setupDashboardClicks() {
-        // ── Owner cards ──
-        // Cash → Kas
-        binding.tvCash?.setOnClickListener {
-            findNavController().navigate(R.id.navigation_kas)
-        }
-        // Transfer/Non-Cash → Kas
-        binding.tvNonCash?.setOnClickListener {
-            findNavController().navigate(R.id.navigation_kas)
-        }
-        // Retur Pending → Retur
-        binding.tvReturPending?.setOnClickListener {
-            findNavController().navigate(R.id.navigation_retur)
-        }
-        // Pengeluaran → Kas
-        binding.tvPengeluaran?.setOnClickListener {
-            findNavController().navigate(R.id.navigation_kas)
-        }
-        // Staff Hadir → Absensi
-        binding.tvStaffHadir?.setOnClickListener {
-            findNavController().navigate(R.id.navigation_absensi)
-        }
-
-        // ── Basic stats cards ──
-        // Request Pending → Request Produk
-        binding.tvStatRequest?.setOnClickListener {
-            findNavController().navigate(R.id.navigation_request)
-        }
-        // Invoice → Invoice
-        binding.tvStatInvoice?.setOnClickListener {
-            findNavController().navigate(R.id.navigation_invoice)
-        }
-        // Customer → Customer
-        binding.tvStatCustomer?.setOnClickListener {
-            findNavController().navigate(R.id.navigation_customer)
-        }
-        // Cabang → Cabang
-        binding.tvStatCabang?.setOnClickListener {
-            findNavController().navigate(R.id.navigation_cabang)
-        }
-
-        // ── Owner: Omzet Bulan → Omzet Per Cabang ──
-        binding.tvOmzetBulan?.setOnClickListener {
-            findNavController().navigate(R.id.navigation_omzet_cabang)
-        }
+        binding.tvCash?.setOnClickListener { safeNavigate(R.id.navigation_kas) }
+        binding.tvNonCash?.setOnClickListener { safeNavigate(R.id.navigation_kas) }
+        binding.tvReturPending?.setOnClickListener { safeNavigate(R.id.navigation_retur) }
+        binding.tvPengeluaran?.setOnClickListener { safeNavigate(R.id.navigation_kas) }
+        binding.tvStaffHadir?.setOnClickListener { safeNavigate(R.id.navigation_absensi) }
+        binding.tvStatRequest?.setOnClickListener { safeNavigate(R.id.navigation_request) }
+        binding.tvStatInvoice?.setOnClickListener { safeNavigate(R.id.navigation_invoice) }
+        binding.tvStatCustomer?.setOnClickListener { safeNavigate(R.id.navigation_customer) }
+        binding.tvStatCabang?.setOnClickListener { safeNavigate(R.id.navigation_cabang) }
+        binding.tvOmzetBulan?.setOnClickListener { safeNavigate(R.id.navigation_omzet_cabang) }
     }
 
     private fun showOwnerDashboard(data: OwnerDashboardData) {
@@ -159,12 +129,11 @@ class DashboardFragment : Fragment() {
         binding.tvTopProduk.setOnClickListener {
             if (topProduk.isNotEmpty()) {
                 val first = topProduk[0]
-                val bundle = bundleOf(
+                safeNavigate(R.id.navigation_top_produk_detail, bundleOf(
                     "nama_produk" to (first.namaProduk ?: ""),
                     "total_qty" to first.totalQty,
                     "total_omzet" to first.totalOmzet
-                )
-                findNavController().navigate(R.id.navigation_top_produk_detail, bundle)
+                ))
             }
         }
 
@@ -177,8 +146,7 @@ class DashboardFragment : Fragment() {
 
         // Klik Top Kasir → Leaderboard Kasir
         binding.tvTopKasir.setOnClickListener {
-            val bundle = bundleOf("type" to "kasir")
-            findNavController().navigate(R.id.navigation_leaderboard, bundle)
+            safeNavigate(R.id.navigation_leaderboard, bundleOf("type" to "kasir"))
         }
 
         // Top cabang
@@ -190,8 +158,7 @@ class DashboardFragment : Fragment() {
 
         // Klik Top Cabang → Leaderboard Cabang
         binding.tvTopCabang.setOnClickListener {
-            val bundle = bundleOf("type" to "cabang")
-            findNavController().navigate(R.id.navigation_leaderboard, bundle)
+            safeNavigate(R.id.navigation_leaderboard, bundleOf("type" to "cabang"))
         }
 
         // Charts ViewPager (swipe: Omzet, Keuntungan, Pengeluaran)

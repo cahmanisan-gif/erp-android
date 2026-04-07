@@ -22,12 +22,15 @@ class TopProdukDetailViewModel : ViewModel() {
             try {
                 val response = ApiClient.service.getTopProdukDetail(token, namaProduk)
                 if (response.success) {
-                    val sorted = (response.data ?: emptyList())
-                        .sortedByDescending { it.qty }
-                    items.value = sorted
+                    items.value = (response.data ?: emptyList()).sortedByDescending { it.qty }
+                } else {
+                    items.value = emptyList()
+                    errorMessage.value = "Data belum tersedia"
                 }
             } catch (e: Exception) {
-                errorMessage.value = "Gagal memuat detail produk per cabang"
+                // API belum tersedia di backend — tampilkan pesan
+                items.value = emptyList()
+                errorMessage.value = "Fitur ini membutuhkan API backend yang belum tersedia"
             } finally {
                 isLoading.value = false
             }
