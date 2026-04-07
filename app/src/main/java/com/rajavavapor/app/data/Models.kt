@@ -412,18 +412,61 @@ data class LeaderboardItem(
     fun getDisplayName(): String = namaLengkap ?: nama ?: namaCabang ?: "?"
 }
 
-// ── Top Produk Detail Per Cabang ──────────────────────────────────────────────
+// ── Best Seller ──────────────────────────────────────────────────────────────
 
-data class ProdukCabangResponse(
+data class BestSellerResponse(
     val success: Boolean,
-    val data: List<ProdukCabangItem>?
+    val data: List<BestSellerItem>?
+)
+
+data class BestSellerItem(
+    @SerializedName("produk_id") val produkId: Int?,
+    @SerializedName("nama_produk") val namaProduk: String?,
+    val sku: String?,
+    val kategori: String?,
+    @SerializedName("foto_url") val fotoUrl: String?,
+    @SerializedName("total_qty") val totalQty: Int?,
+    @SerializedName("total_omzet") val totalOmzet: Double?,
+    @SerializedName("total_transaksi") val totalTransaksi: Int?,
+    @SerializedName("jumlah_cabang") val jumlahCabang: Int?
+)
+
+data class BestSellerDetailResponse(
+    val success: Boolean,
+    val produk: BestSellerProdukInfo?,
+    val ringkasan: BestSellerRingkasan?,
+    @SerializedName("per_cabang") val perCabang: List<ProdukCabangItem>?,
+    @SerializedName("per_hari") val perHari: List<BestSellerTrend>?,
+    @SerializedName("per_bulan") val perBulan: List<BestSellerTrend>?
+)
+
+data class BestSellerProdukInfo(
+    val id: Int?,
+    @SerializedName("nama_produk") val namaProduk: String?,
+    val sku: String?,
+    @SerializedName("harga_jual") val hargaJual: Long?,
+    @SerializedName("harga_modal") val hargaModal: Long?
+)
+
+data class BestSellerRingkasan(
+    @SerializedName("total_qty") val totalQty: Int?,
+    @SerializedName("total_omzet") val totalOmzet: Double?,
+    @SerializedName("total_transaksi") val totalTransaksi: Int?
 )
 
 data class ProdukCabangItem(
     @SerializedName("cabang_id") val cabangId: Int?,
     @SerializedName("nama_cabang") val namaCabang: String?,
     @SerializedName("kode_cabang") val kodeCabang: String?,
-    val qty: Int?
+    val qty: Int?,
+    val omzet: Double?
+)
+
+data class BestSellerTrend(
+    val tanggal: String?,
+    val bulan: String?,
+    val qty: Int?,
+    val omzet: Double?
 )
 
 // ── Omzet Per Cabang (dari api/monitoring/omzet & api/dashboard/owner) ────────

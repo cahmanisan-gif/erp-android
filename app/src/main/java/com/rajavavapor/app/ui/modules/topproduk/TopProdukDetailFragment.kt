@@ -48,7 +48,7 @@ class TopProdukDetailFragment : Fragment() {
 
         binding.swipeRefresh.setColorSchemeResources(R.color.brand_red)
         binding.swipeRefresh.setOnRefreshListener {
-            viewModel.load(requireContext(), namaProduk)
+            viewModel.loadByName(requireContext(), namaProduk)
         }
 
         viewModel.isLoading.observe(viewLifecycleOwner) { binding.swipeRefresh.isRefreshing = it }
@@ -63,7 +63,7 @@ class TopProdukDetailFragment : Fragment() {
             if (msg != null) Snackbar.make(binding.root, msg, Snackbar.LENGTH_LONG).show()
         }
 
-        viewModel.load(requireContext(), namaProduk)
+        viewModel.loadByName(requireContext(), namaProduk)
     }
 
     override fun onDestroyView() {

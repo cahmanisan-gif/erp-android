@@ -216,13 +216,32 @@ interface ApiService {
         @Query("mode") mode: String? = "bulan_ini"
     ): LeaderboardResponse
 
-    // ── Top Produk Detail Per Cabang ────────────────────────────────────
+    // ── Best Seller (3 endpoints) ───────────────────────────────────────
 
-    @GET("api/dashboard/top-produk-detail")
-    suspend fun getTopProdukDetail(
+    @GET("api/best-seller")
+    suspend fun getBestSeller(
         @Header("Authorization") token: String,
-        @Query("nama_produk") namaProduk: String
-    ): ProdukCabangResponse
+        @Query("periode") periode: String? = "bulan",
+        @Query("tanggal") tanggal: String? = null,
+        @Query("cabang_id") cabangId: Int? = null,
+        @Query("limit") limit: Int? = 20
+    ): BestSellerResponse
+
+    @GET("api/best-seller/{produk_id}/detail")
+    suspend fun getBestSellerDetail(
+        @Header("Authorization") token: String,
+        @Path("produk_id") produkId: Int,
+        @Query("periode") periode: String? = "bulan",
+        @Query("tanggal") tanggal: String? = null
+    ): BestSellerDetailResponse
+
+    @GET("api/best-seller/cabang/{cabang_id}")
+    suspend fun getBestSellerCabang(
+        @Header("Authorization") token: String,
+        @Path("cabang_id") cabangId: Int,
+        @Query("periode") periode: String? = "bulan",
+        @Query("limit") limit: Int? = 20
+    ): BestSellerResponse
 
     // ── Monitoring Omzet (real endpoint dari backend) ───────────────────
 
