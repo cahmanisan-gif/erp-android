@@ -37,7 +37,7 @@
             android:fontFamily="sans-serif-black"
             android:letterSpacing="0.05" />
 
-        <!-- Period selector pills -->
+        <!-- Period selector — color state list -->
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -60,8 +60,8 @@
                     android:text="Bulan Ini"
                     android:textSize="12sp"
                     android:checked="true"
-                    android:textColor="@color/white"
-                    app:chipBackgroundColor="@color/brand_red"
+                    android:textColor="@color/chip_leaderboard_text"
+                    app:chipBackgroundColor="@color/chip_leaderboard_bg"
                     app:chipCornerRadius="20dp" />
 
                 <com.google.android.material.chip.Chip
@@ -71,8 +71,8 @@
                     android:layout_height="wrap_content"
                     android:text="3 Bulan"
                     android:textSize="12sp"
-                    android:textColor="@color/white"
-                    app:chipBackgroundColor="#40FFFFFF"
+                    android:textColor="@color/chip_leaderboard_text"
+                    app:chipBackgroundColor="@color/chip_leaderboard_bg"
                     app:chipCornerRadius="20dp" />
 
                 <com.google.android.material.chip.Chip
@@ -82,8 +82,8 @@
                     android:layout_height="wrap_content"
                     android:text="6 Bulan"
                     android:textSize="12sp"
-                    android:textColor="@color/white"
-                    app:chipBackgroundColor="#40FFFFFF"
+                    android:textColor="@color/chip_leaderboard_text"
+                    app:chipBackgroundColor="@color/chip_leaderboard_bg"
                     app:chipCornerRadius="20dp" />
 
                 <com.google.android.material.chip.Chip
@@ -93,8 +93,8 @@
                     android:layout_height="wrap_content"
                     android:text="9 Bulan"
                     android:textSize="12sp"
-                    android:textColor="@color/white"
-                    app:chipBackgroundColor="#40FFFFFF"
+                    android:textColor="@color/chip_leaderboard_text"
+                    app:chipBackgroundColor="@color/chip_leaderboard_bg"
                     app:chipCornerRadius="20dp" />
 
                 <com.google.android.material.chip.Chip
@@ -104,8 +104,8 @@
                     android:layout_height="wrap_content"
                     android:text="Of The Year"
                     android:textSize="12sp"
-                    android:textColor="@color/white"
-                    app:chipBackgroundColor="#40FFFFFF"
+                    android:textColor="@color/chip_leaderboard_text"
+                    app:chipBackgroundColor="@color/chip_leaderboard_bg"
                     app:chipCornerRadius="20dp" />
 
             </com.google.android.material.chip.ChipGroup>

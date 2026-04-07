@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.chip.Chip
 import com.google.android.material.snackbar.Snackbar
 import com.rajavavapor.app.R
+import com.rajavavapor.app.data.SessionManager
 import com.rajavavapor.app.databinding.FragmentLeaderboardBinding
 
 class LeaderboardFragment : Fragment() {
@@ -41,7 +42,13 @@ class LeaderboardFragment : Fragment() {
             binding.tvLeaderboardSubtitle.text = "TOP RANKING CABANG"
         }
 
-        adapter = LeaderboardAdapter()
+        val session = SessionManager(requireContext())
+        val currentUserName = session.getUser()?.namaLengkap ?: session.getUser()?.username
+        val currentCabang = session.getUser()?.namaCabang
+
+        adapter = LeaderboardAdapter(
+            currentUserName = if (leaderboardType == "kasir") currentUserName else currentCabang
+        )
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
 
