@@ -128,4 +128,9 @@
         android:name="com.rajavavapor.app.ui.modules.omzet.OmzetCabangFragment"
         android:label="Omzet Cabang" />
 
+    <fragment
+        android:id="@+id/navigation_leaderboard"
+        android:name="com.rajavavapor.app.ui.modules.leaderboard.LeaderboardFragment"
+        android:label="Leaderboard" />
+
 </navigation>

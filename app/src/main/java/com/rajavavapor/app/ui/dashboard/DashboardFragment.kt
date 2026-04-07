@@ -174,12 +174,24 @@ class DashboardFragment : Fragment() {
         }.joinToString("\n").ifEmpty { "Belum ada data" }
         binding.tvTopKasir.text = kasirText
 
+        // Klik Top Kasir → Leaderboard Kasir
+        binding.tvTopKasir.setOnClickListener {
+            val bundle = bundleOf("type" to "kasir")
+            findNavController().navigate(R.id.navigation_leaderboard, bundle)
+        }
+
         // Top cabang
         val topCabang = data.topCabang?.take(5) ?: emptyList()
         val cabangText = topCabang.mapIndexed { i, c ->
             "${i + 1}. ${c.nama ?: "-"}  •  ${c.omzet.toRupiah()}"
         }.joinToString("\n").ifEmpty { "Belum ada data" }
         binding.tvTopCabang.text = cabangText
+
+        // Klik Top Cabang → Leaderboard Cabang
+        binding.tvTopCabang.setOnClickListener {
+            val bundle = bundleOf("type" to "cabang")
+            findNavController().navigate(R.id.navigation_leaderboard, bundle)
+        }
 
         // Charts ViewPager (swipe: Omzet, Keuntungan, Pengeluaran)
         setupChartPager(data.trend7Hari)

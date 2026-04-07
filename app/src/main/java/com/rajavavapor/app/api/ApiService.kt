@@ -207,6 +207,15 @@ interface ApiService {
         @Header("Authorization") token: String
     ): PromoResponse
 
+    // ── Leaderboard (kasir/cabang) ──────────────────────────────────────
+
+    @GET("api/dashboard/leaderboard-retail")
+    suspend fun getLeaderboard(
+        @Header("Authorization") token: String,
+        @Query("type") type: String,
+        @Query("mode") mode: String? = "bulan_ini"
+    ): LeaderboardResponse
+
     // ── Top Produk Detail Per Cabang ────────────────────────────────────
 
     @GET("api/dashboard/top-produk-detail")

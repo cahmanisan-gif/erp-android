@@ -389,6 +389,29 @@ data class PromoItem(
     @SerializedName("is_aktif") val isAktif: Boolean?
 )
 
+// ── Leaderboard ──────────────────────────────────────────────────────────────
+
+data class LeaderboardResponse(
+    val success: Boolean,
+    val data: List<LeaderboardItem>?,
+    @SerializedName("top_kasir") val topKasir: List<LeaderboardItem>?,
+    @SerializedName("top_toko") val topToko: List<LeaderboardItem>?
+)
+
+data class LeaderboardItem(
+    val id: Int?,
+    val nama: String?,
+    @SerializedName("nama_lengkap") val namaLengkap: String?,
+    @SerializedName("nama_cabang") val namaCabang: String?,
+    @SerializedName("kode_cabang") val kodeCabang: String?,
+    val kode: String?,
+    val subtitle: String?,
+    val omzet: Double?,
+    val trx: Int?
+) {
+    fun getDisplayName(): String = namaLengkap ?: nama ?: namaCabang ?: "?"
+}
+
 // ── Top Produk Detail Per Cabang ──────────────────────────────────────────────
 
 data class ProdukCabangResponse(
