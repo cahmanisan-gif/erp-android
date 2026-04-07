@@ -107,19 +107,10 @@ class ChartPagerAdapter(
             axisRight.isEnabled = false
             setExtraOffsets(8f, 8f, 8f, 8f)
 
-            // Animate chart entry
-            animateX(800)
-
-            // Animate fill alpha
-            ValueAnimator.ofInt(0, 30).apply {
-                duration = 1000
-                interpolator = DecelerateInterpolator()
-                addUpdateListener { anim ->
-                    dataSet.fillAlpha = anim.animatedValue as Int
-                    invalidate()
-                }
-                start()
-            }
+            // Light animation — no fill animator to reduce lag
+            dataSet.fillAlpha = 25
+            animateX(400)
+            invalidate()
         }
     }
 
