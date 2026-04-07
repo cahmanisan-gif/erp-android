@@ -8,6 +8,7 @@ import com.rajavavapor.app.api.ApiClient
 import com.rajavavapor.app.data.OmzetCabangItem
 import com.rajavavapor.app.data.SessionManager
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withTimeoutOrNull
 
 class OmzetCabangViewModel : ViewModel() {
 
@@ -20,38 +21,27 @@ class OmzetCabangViewModel : ViewModel() {
         viewModelScope.launch {
             isLoading.value = true
             try {
-                // Try monitoring/omzet first (detailed per cabang)
-                val response = ApiClient.service.getMonitoringOmzetDetail(token, periode)
-                if (response.success) {
-                    val sorted = (response.data ?: emptyList())
-                        .sortedByDescending { it.getDisplayOmzet() }
-                    items.value = sorted
+                // Try dashboard/owner first (fast, already cached by server)
+                val dashboard = withTimeoutOrNull(8000) {
+                    ApiClient.service.getDashboardOwner(token)
+                }
+                if (dashboard?.success == true && !dashboard.data?.topCabang.isNullOrEmpty()) {
+                    val converted = dashboard.data!!.topCabang!!.map { tc ->
+                        OmzetCabangItem(
+                            cabangId = null, kode = tc.kode, nama = tc.nama,
+                            namaCabang = tc.nama, posTotal = tc.omzet,
+                            posCash = null, posTransfer = null,
+                            omzet = tc.omzet, trx = tc.trx, totalTrx = tc.trx
+                        )
+                    }.sortedByDescending { it.getDisplayOmzet() }
+                    items.value = converted
+                } else {
+                    items.value = emptyList()
+                    errorMessage.value = "Data belum tersedia"
                 }
             } catch (e: Exception) {
-                // Fallback: use top_cabang from dashboard/owner
-                try {
-                    val dashboard = ApiClient.service.getDashboardOwner(token)
-                    if (dashboard.success && dashboard.data != null) {
-                        val topCabang = dashboard.data.topCabang ?: emptyList()
-                        val converted = topCabang.map { tc ->
-                            OmzetCabangItem(
-                                cabangId = null,
-                                kode = tc.kode,
-                                nama = tc.nama,
-                                namaCabang = tc.nama,
-                                posTotal = tc.omzet,
-                                posCash = null,
-                                posTransfer = null,
-                                omzet = tc.omzet,
-                                trx = tc.trx,
-                                totalTrx = tc.trx
-                            )
-                        }
-                        items.value = converted
-                    }
-                } catch (_: Exception) {
-                    errorMessage.value = "Gagal memuat data omzet cabang"
-                }
+                items.value = emptyList()
+                errorMessage.value = "Gagal memuat data"
             } finally {
                 isLoading.value = false
             }
