@@ -18,6 +18,8 @@ import com.rajavavapor.app.data.SessionManager
 import com.rajavavapor.app.data.StatsData
 import com.rajavavapor.app.data.TrendHari
 import com.rajavavapor.app.databinding.FragmentDashboardBinding
+import android.os.Bundle
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.rajavavapor.app.util.AnimationHelper
 import java.text.NumberFormat
@@ -145,12 +147,25 @@ class DashboardFragment : Fragment() {
         AnimationHelper.animateRupiah(binding.tvPengeluaran, data.pengeluaranBulan)
         binding.tvStaffHadir.text = "${data.staffHadir}/${data.staffTotal}"
 
-        // Top produk
+        // Top produk — clickable
         val topProduk = data.topProduk?.take(5) ?: emptyList()
         val produkText = topProduk.mapIndexed { i, p ->
             "${i + 1}. ${p.namaProduk ?: "-"}  •  ${p.totalQty} pcs"
         }.joinToString("\n").ifEmpty { "Belum ada data" }
         binding.tvTopProduk.text = produkText
+
+        // Klik Top Produk card → detail produk terlaris per cabang
+        binding.tvTopProduk.setOnClickListener {
+            if (topProduk.isNotEmpty()) {
+                val first = topProduk[0]
+                val bundle = bundleOf(
+                    "nama_produk" to (first.namaProduk ?: ""),
+                    "total_qty" to first.totalQty,
+                    "total_omzet" to first.totalOmzet
+                )
+                findNavController().navigate(R.id.navigation_top_produk_detail, bundle)
+            }
+        }
 
         // Top kasir
         val topKasir = data.topKasir?.take(5) ?: emptyList()

@@ -207,6 +207,14 @@ interface ApiService {
         @Header("Authorization") token: String
     ): PromoResponse
 
+    // ── Top Produk Detail Per Cabang ────────────────────────────────────
+
+    @GET("api/dashboard/top-produk-detail")
+    suspend fun getTopProdukDetail(
+        @Header("Authorization") token: String,
+        @Query("nama_produk") namaProduk: String
+    ): ProdukCabangResponse
+
     // ── Monitoring Omzet (real endpoint dari backend) ───────────────────
 
     @GET("api/monitoring/omzet")

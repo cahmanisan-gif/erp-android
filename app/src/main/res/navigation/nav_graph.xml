@@ -119,6 +119,11 @@
         android:label="Promo" />
 
     <fragment
+        android:id="@+id/navigation_top_produk_detail"
+        android:name="com.rajavavapor.app.ui.modules.topproduk.TopProdukDetailFragment"
+        android:label="Produk Detail" />
+
+    <fragment
         android:id="@+id/navigation_omzet_cabang"
         android:name="com.rajavavapor.app.ui.modules.omzet.OmzetCabangFragment"
         android:label="Omzet Cabang" />

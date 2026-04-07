@@ -389,6 +389,20 @@ data class PromoItem(
     @SerializedName("is_aktif") val isAktif: Boolean?
 )
 
+// ── Top Produk Detail Per Cabang ──────────────────────────────────────────────
+
+data class ProdukCabangResponse(
+    val success: Boolean,
+    val data: List<ProdukCabangItem>?
+)
+
+data class ProdukCabangItem(
+    @SerializedName("cabang_id") val cabangId: Int?,
+    @SerializedName("nama_cabang") val namaCabang: String?,
+    @SerializedName("kode_cabang") val kodeCabang: String?,
+    val qty: Int?
+)
+
 // ── Omzet Per Cabang (dari api/monitoring/omzet & api/dashboard/owner) ────────
 
 data class OmzetCabangResponse(
