@@ -32,16 +32,28 @@ class LoginActivity : AppCompatActivity() {
             insets
         }
 
-        binding.btnLogin.setOnClickListener {
-            AnimationHelper.hapticClick(it)
-            AnimationHelper.bounceClick(it)
+        val doLogin = {
             val username = binding.etUsername.text?.toString()?.trim() ?: ""
             val password = binding.etPassword.text?.toString() ?: ""
             if (username.isEmpty() || password.isEmpty()) {
                 Snackbar.make(binding.root, "Username dan password wajib diisi", Snackbar.LENGTH_SHORT).show()
-                return@setOnClickListener
+            } else {
+                viewModel.login(this, username, password)
             }
-            viewModel.login(this, username, password)
+        }
+
+        binding.btnLogin.setOnClickListener {
+            AnimationHelper.hapticClick(it)
+            AnimationHelper.bounceClick(it)
+            doLogin()
+        }
+
+        // Enter key on password field triggers login
+        binding.etPassword.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == android.view.inputmethod.EditorInfo.IME_ACTION_DONE) {
+                doLogin()
+                true
+            } else false
         }
 
         viewModel.isLoading.observe(this) { loading ->
