@@ -388,59 +388,109 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginStart="4dp" />
 
+                <!-- Produk Terlaris — dark card, premium -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    app:cardBackgroundColor="#FFFFFF"
-                    app:cardCornerRadius="14dp"
-                    app:cardElevation="1dp">
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="@color/dark_bg"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="2dp">
                     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                        android:orientation="vertical" android:padding="18dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:text="Produk Terlaris" android:textColor="#111111" android:textSize="14sp"
-                            android:textStyle="bold" android:layout_marginBottom="10dp" />
+                        android:orientation="vertical" android:padding="20dp">
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:orientation="horizontal" android:gravity="center_vertical">
+                            <View android:layout_width="4dp" android:layout_height="18dp"
+                                android:background="@color/brand_red" android:layout_marginEnd="10dp" />
+                            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Produk Terlaris" android:textColor="#FFFFFF" android:textSize="15sp"
+                                android:textStyle="bold" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="Lihat >" android:textColor="@color/brand_red" android:textSize="12sp" />
+                        </LinearLayout>
                         <TextView android:id="@+id/tvTopProduk" android:layout_width="match_parent"
                             android:layout_height="wrap_content" android:text="-"
-                            android:textColor="#666666" android:textSize="13sp" android:lineSpacingExtra="6dp" />
+                            android:textColor="#CCCCCC" android:textSize="13sp" android:lineSpacingExtra="8dp"
+                            android:layout_marginTop="12dp" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <com.google.android.material.card.MaterialCardView
+                <!-- Kasir + Cabang side by side -->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    app:cardBackgroundColor="#FFFFFF"
-                    app:cardCornerRadius="14dp"
-                    app:cardElevation="1dp">
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                        android:orientation="vertical" android:padding="18dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:text="Kasir Terbaik" android:textColor="#111111" android:textSize="14sp"
-                            android:textStyle="bold" android:layout_marginBottom="10dp" />
-                        <TextView android:id="@+id/tvTopKasir" android:layout_width="match_parent"
-                            android:layout_height="wrap_content" android:text="-"
-                            android:textColor="#666666" android:textSize="13sp" android:lineSpacingExtra="6dp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
                     android:layout_marginBottom="24dp"
-                    app:cardBackgroundColor="#FFFFFF"
-                    app:cardCornerRadius="14dp"
-                    app:cardElevation="1dp">
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                        android:orientation="vertical" android:padding="18dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:text="Cabang Terbaik" android:textColor="#111111" android:textSize="14sp"
-                            android:textStyle="bold" android:layout_marginBottom="10dp" />
-                        <TextView android:id="@+id/tvTopCabang" android:layout_width="match_parent"
-                            android:layout_height="wrap_content" android:text="-"
-                            android:textColor="#666666" android:textSize="13sp" android:lineSpacingExtra="6dp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
+                    android:baselineAligned="false">
+
+                    <!-- Kasir Terbaik -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="6dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        app:cardBackgroundColor="#FFFFFF"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="1dp">
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:orientation="vertical" android:padding="16dp">
+                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                                android:orientation="horizontal" android:gravity="center_vertical">
+                                <View android:layout_width="4dp" android:layout_height="14dp"
+                                    android:background="#2E7D32" android:layout_marginEnd="8dp" />
+                                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Kasir" android:textColor="#111111" android:textSize="13sp"
+                                    android:textStyle="bold" />
+                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                    android:text=">" android:textColor="#AAAAAA" android:textSize="14sp" />
+                            </LinearLayout>
+                            <TextView android:id="@+id/tvTopKasir" android:layout_width="match_parent"
+                                android:layout_height="wrap_content" android:text="-"
+                                android:textColor="#555555" android:textSize="12sp" android:lineSpacingExtra="6dp"
+                                android:layout_marginTop="10dp" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Cabang Terbaik -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginStart="6dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        app:cardBackgroundColor="#FFFFFF"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="1dp">
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:orientation="vertical" android:padding="16dp">
+                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                                android:orientation="horizontal" android:gravity="center_vertical">
+                                <View android:layout_width="4dp" android:layout_height="14dp"
+                                    android:background="#1565C0" android:layout_marginEnd="8dp" />
+                                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Cabang" android:textColor="#111111" android:textSize="13sp"
+                                    android:textStyle="bold" />
+                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                    android:text=">" android:textColor="#AAAAAA" android:textSize="14sp" />
+                            </LinearLayout>
+                            <TextView android:id="@+id/tvTopCabang" android:layout_width="match_parent"
+                                android:layout_height="wrap_content" android:text="-"
+                                android:textColor="#555555" android:textSize="12sp" android:lineSpacingExtra="6dp"
+                                android:layout_marginTop="10dp" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
             </LinearLayout>
 
             <!-- ═══════════ BASIC STATS ═══════════ -->
